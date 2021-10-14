@@ -1,4 +1,4 @@
-# research-milestone
+# GooseCity
 This is a Django application that runs as the back-end of a database and data management system for the web and React-Bootstrap run the frout-end. 
 It aosl can view products and add them to card.
 
@@ -8,7 +8,7 @@ https://google.github.io/styleguide/jsguide.html
 https://google.github.io/styleguide/pyguide.html
 
 ## External Requirements
-Requires pipenv, npm.js, React, Django and React-Bootstrap.
+Requires pipenv, React, Django, bootstrap@4.6.0 and reactstrap@8.9.0.
 
 Django can be found at https://www.djangoproject.com/
 
