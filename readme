@@ -1,4 +1,0 @@
-Environment setup
-1. pip install Django==3.2.7
-
-2. Openfile and run command python manage.py runserver
