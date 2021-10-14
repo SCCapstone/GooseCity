@@ -35,9 +35,5 @@ After cloning the repo, run the following commands:
 server runs at http://localhost:8000/ <br>
 ui runs at http://localhost:3000/ <br>
 
-## Video
-
-https://youtu.be/fmpLK3L29Eo
-
 ## Author
 Zeliang Zhuo - zzhuo@email.sc.edu <br>
