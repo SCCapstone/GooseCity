@@ -1,6 +1,6 @@
-# GooseCity
-This is a Django application that runs as the back-end of a database and data management system for the web and React-Bootstrap run the frout-end. 
-It aosl can view products and add them to card.
+# wsgi_web_server_with_uris_images
+This is a Django application that could run the a webiste with wsgi to connect the server  in could and could get the static image and a wbiste could have two different sub-webiste.
+
 
 ## Style Guide
 https://google.github.io/styleguide/jsguide.html
@@ -8,32 +8,30 @@ https://google.github.io/styleguide/jsguide.html
 https://google.github.io/styleguide/pyguide.html
 
 ## External Requirements
-Requires pipenv, React, Django, bootstrap@4.6.0 and reactstrap@8.9.0.
+Requires Django and Python 2.7.0 .
+IDE : PyCharm 2021.2.2 
 
 Django can be found at https://www.djangoproject.com/
 
-React-Bootstrap can be found at https://react-bootstrap.github.io/
+Python can be found at https://www.python.org/download/releases/2.7/
 
 ## Setup
 After cloning the repo, run the following commands:
 
->cd research-milestone-IvesZ <br>
->pipenv shell <br>
->cd backend <br>
->python manage.py makemigrations todo <br>
->python manage.py migrate todo <br>
->cd ../frontend <br>
->npm install <br>
+>open the PyCharm on your computer  <br>
+>add the project file that you cloned before  into PyCharm<br>
+>edit configuration in the PyCharm <br>
+>set the path that you download the path of repo <br>
+>set the Python interpreter to Python 2.7 <br>
 
 ## Running
 
->cd backend <br>
->python manage.py runserver <br>
->cd frontend <br>
->npm start <br>
+>open a browser with localhost address, like localhost/shose 
+>click the right corner button to run the code in PyCharm
 
-server runs at http://localhost:8000/ <br>
-ui runs at http://localhost:3000/ <br>
+## Video
+
+https://www.youtube.com/watch?v=E-UraNz0aAg&t=2s
 
 ## Author
-Zeliang Zhuo - zzhuo@email.sc.edu <br>
+Xingcheng ren - xren@email.sc.edu <br>
