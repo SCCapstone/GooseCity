@@ -17,7 +17,7 @@ React-Bootstrap can be found at https://react-bootstrap.github.io/
 ## Setup
 After cloning the repo, run the following commands:
 
->cd research-milestone-IvesZ <br>
+>cd GooseCity <br>
 >pipenv shell <br>
 >cd backend <br>
 >python manage.py makemigrations todo <br>
@@ -27,6 +27,7 @@ After cloning the repo, run the following commands:
 
 ## Running
 
+>pipenv shell <br>
 >cd backend <br>
 >python manage.py runserver <br>
 >cd frontend <br>
