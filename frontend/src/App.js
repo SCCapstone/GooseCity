@@ -62,8 +62,9 @@ class App extends Component {
         .then((res) => this.refreshList());
   };
   handleDelete = (item) => {
+    let baseurl = 'http://localhost:8000/api/todos/';
     axios
-      .delete(`http://localhost:8000/api/todos/${item.id}/`)
+      .delete(baseurl+item.id+'/')
       .then((res) => this.refreshList());
   };
 
