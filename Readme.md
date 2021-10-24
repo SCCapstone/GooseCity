@@ -39,3 +39,4 @@ ui runs at http://localhost:3000/ <br>
 ## Author
 Zeliang Zhuo - zzhuo@email.sc.edu <br>
 Jiabei He - jiabei@email.sc.edu
+Xingcheng Ren -xren@email.sc.edu <br>
