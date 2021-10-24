@@ -38,13 +38,13 @@ ui runs at http://localhost:3000/ <br>
 
 ## Deployment
 Webapps need a deployment section that explains how to get it deployed on the internet. These should be detailed enough so anyone can re-deploy if needed. 
->heroku login
->cd goosecity-main/
->git init
->heroku git:remote -a goosecity
->git add .
->git commit -am "make it better"
->git push heroku master
+>heroku login<br>
+>cd goosecity-main/<br>
+>git init<br>
+>heroku git:remote -a goosecity<br>
+>git add .<br>
+>git commit -am "make it better"<br>
+>git push heroku master<br>
 
 ## Author
 Zeliang Zhuo - zzhuo@email.sc.edu <br>
