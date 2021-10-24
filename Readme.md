@@ -36,6 +36,16 @@ After cloning the repo, run the following commands:
 server runs at http://localhost:8000/ <br>
 ui runs at http://localhost:3000/ <br>
 
+## Deployment
+Webapps need a deployment section that explains how to get it deployed on the internet. These should be detailed enough so anyone can re-deploy if needed. 
+>heroku login
+>cd goosecity-main/
+>git init
+>heroku git:remote -a goosecity
+>git add .
+>git commit -am "make it better"
+>git push heroku master
+
 ## Author
 Zeliang Zhuo - zzhuo@email.sc.edu <br>
 Jiabei He - jiabei@email.sc.edu
