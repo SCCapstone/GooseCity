@@ -52,3 +52,4 @@ Zeliang Zhuo - zzhuo@email.sc.edu <br>
 Chenhao Cui- cuic@email.sc.edi <br>
 Xingcheng Ren - xren@email.sc.edu <br>
 Jiabei He - jiabei@email.sc.edu <br>
+Weihang He - weihang@email.sc.edu <br>
