@@ -8,7 +8,7 @@ https://google.github.io/styleguide/jsguide.html
 https://google.github.io/styleguide/pyguide.html
 
 ## External Requirements
-Requires pipenv, React, Django, Node.js, MongoDB, bootstrap@4.6.0.
+Requires pipenv, React, Django, Node.js.
 
 * [Django](https://www.djangoproject.com/)
 * [Node.js](https://nodejs.org/en/)
