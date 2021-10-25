@@ -50,3 +50,4 @@ Webapps need a deployment section that explains how to get it deployed on the in
 ## Author
 Zeliang Zhuo - zzhuo@email.sc.edu <br>
 Jiabei He - jiabei@email.sc.edu
+Chenhao Cui- cuic@email.sc.edu
