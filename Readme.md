@@ -8,11 +8,12 @@ https://google.github.io/styleguide/jsguide.html
 https://google.github.io/styleguide/pyguide.html
 
 ## External Requirements
-Requires pipenv, React, Django, bootstrap@4.6.0 and reactstrap@8.9.0.
+Requires pipenv, React, Django, Node.js, MongoDB, bootstrap@4.6.0 and reactstrap@8.9.0.
 
-Django can be found at https://www.djangoproject.com/
-
-React-Bootstrap can be found at https://react-bootstrap.github.io/
+* [Django](https://www.djangoproject.com/)
+* [Node.js](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/)
+* [pipenv](https://pypi.org/project/pipenv/)
 
 ## Setup
 After cloning the repo, run the following commands:
