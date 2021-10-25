@@ -1,6 +1,6 @@
 # GooseCity
 This is a Django application that runs as the back-end of a database and data management system for the web and React-Bootstrap run the front-end. 
-It also can view products and add them to card.
+It is a shopping web.
 
 ## Style Guide
 https://google.github.io/styleguide/jsguide.html
