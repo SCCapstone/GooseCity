@@ -1,6 +1,6 @@
 import React from 'react'
 import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-
+import './style.css';
 
 function TableToolbar() {
 
@@ -21,10 +21,12 @@ function TableToolbar() {
             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
           </NavDropdown>
         </Nav>
+        <div>
+        </div>
         <Nav>
-          <Nav.Link href="#deets">More deets</Nav.Link>
+          <Nav.Link href="#deets">log in </Nav.Link>
           <Nav.Link eventKey={2} href="#memes">
-            Dank memes
+            register
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

@@ -1,9 +1,9 @@
 import React, { Component, useState } from "react";
-import Modal from "../components/Modal";
+import Modal from "../../components/Modal";
 import {Card, Col, Form, Row} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import TableToolbar from "../views/headerView/header";
+import TableToolbar from "../header/header";
 import {Button} from "bootstrap";
 
 

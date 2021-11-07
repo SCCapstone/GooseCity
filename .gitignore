@@ -1,4 +1,5 @@
 # dependencies
 /backend/db.sqlite3
+/backend/static/
 /frontend/node_modules/
 # requirements.txt

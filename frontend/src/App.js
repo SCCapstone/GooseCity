@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
-import ProductCard from "./general/productCard";
-import TableToolbar from "./views/headerView/header";
-import ControlledCarousel from "./general/controlled"
+import ProductCard from "./views/general/productCard";
+import TableToolbar from "./views/header/header";
+import ControlledCarousel from "./views/general/controlled"
 
 class App extends Component {
 
@@ -28,7 +28,6 @@ class App extends Component {
   render() {
     return (
       <main className="container">
-        <div> {TableToolbar()} </div>
         <ControlledCarousel />
         <h1 className="text-white text-uppercase text-center my-4">app</h1>
         <div className="row">
