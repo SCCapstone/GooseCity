@@ -4,7 +4,7 @@ import {Image, Table} from "react-bootstrap";
 import axios from "axios";
 
 
-const Example = (props) => {
+const Products = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState();
   useEffect(() => {
@@ -69,4 +69,4 @@ const Example = (props) => {
   );
 };
 
-export default Example;
+export default Products;
