@@ -9,13 +9,13 @@ export default function ControlledCarousel() {
   };
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
+    <Carousel activeIndex={index} onSelect={handleSelect} style={{paddingRight : 50, paddingLeft : 50}}>
       <Carousel.Item>
         <img
           className="d-block w-100"
           src="https://i.ebayimg.com/thumbs/images/g/NKEAAOSwqwRgtYMY/s-l225.jpg"
           alt="First slide"
-          style={{ height : '25rem', width : '25rem'}}
+          style={{ height : '30rem', width : '25rem'}}
         />
         <Carousel.Caption>
           {/*<h3>First slide label</h3>*/}
@@ -26,7 +26,7 @@ export default function ControlledCarousel() {
         <img
           className="d-block w-100"
           src="https://i.ebayimg.com/thumbs/images/g/jRcAAOSwEvJfvN0d/s-l225.jpg"
-          style={{ height : '25rem', width : '25rem'}}
+          style={{ height : '30rem', width : '25rem'}}
         />
         <Carousel.Caption>
           {/*<h3>Second slide label</h3>*/}
@@ -37,7 +37,7 @@ export default function ControlledCarousel() {
         <img
           className="d-block w-100"
           src="https://i.ebayimg.com/thumbs/images/g/0jIAAOSwn0NgvjOQ/s-l225.jpg"
-          style={{ height : '25rem', width : '25rem'}}
+          style={{ height : '30rem', width : '25rem'}}
         />
 
         <Carousel.Caption>

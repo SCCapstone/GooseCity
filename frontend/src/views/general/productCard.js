@@ -96,8 +96,8 @@ class ProductCard extends Component {
   renderTabList = () => {
     return (
       <div className="col-md-12 mb-4">
-        <a type="button" className="btn-floating teal"> <i className="fas fa-arrows-alt" aria-hidden="true"></i></a>
-        <a type="button" className="btn-floating light-green"> <i className="far fa-hand-point-right" aria-hidden="true"></i></a>
+        <a type="button" className="btn-floating teal"> <i className="fas fa-arrows-alt" aria-hidden="true"> </i></a>
+        <a type="button" className="btn-floating light-green"> <i className="far fa-hand-point-right" aria-hidden="true"> </i></a>
       </div>
     );
   };
@@ -111,24 +111,22 @@ class ProductCard extends Component {
     );
     // const newItems = this.state.todoList;
     return  (
-      <Row xs={1} md={4} className="g-4">
-      { newItems.slice(0,4).map((item) => (
+      <Row  className="g-4" >
+      { newItems.slice(0,10).map((item) => (
       <Col>
-        <Card >
-          {/*<Card.Img variant="top" src={item.image} />*/}
-          <img class="card-img-top" src={item.image} alt="..."
-            style={{ height : '15rem', width : '15rem'}}
+        <Card style={{ height : '27rem', width : '18rem'}}>
+          <img class="card-img-fluid" src={item.image} alt="..."
           />
 
           <Card.Body>
-            <Card.Title>{item.product_name}</Card.Title>
-            <Card.Text>
-              This is a longer card with supporting text
-            </Card.Text>
-            <Card.Text>
+            <Card.Title class="border-top">{item.product_name}</Card.Title>
+            {/*<Card.Text class="border-top">*/}
+            {/*  This is a longer card with supporting text*/}
+            {/*</Card.Text>*/}
+            <Card.Text class="border-top">
               {"$"+item.prices.match(/\d+(.\d+)?/g)[0]}
             </Card.Text>
-            <Card.Text>
+            <Card.Text >
               <Link
                 className="btn btn-primary" to={{
                 pathname: "/product/"+item.id,}}
