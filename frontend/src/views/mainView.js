@@ -21,7 +21,7 @@ class MainView extends Component {
           <div className="col-md-12 col-sm-10 mx-auto p-0" >
             <div className="card p-3" style={{}}>
                 <div >
-                    <a className="stretched-link" href="#/TempView" style={{color : "black"}}>
+                    <a className="link" href="#/TempView" style={{color : "black"}}>
                         <h2>Top Views</h2>
                     </a>
                 </div>

@@ -128,10 +128,10 @@ class ProductCard extends Component {
             </Card.Text>
             <Card.Text >
               <Link
-                className="btn btn-primary" to={{
+                 to={{
                 pathname: "/product/"+item.id,}}
               >
-                View
+                View Details
               </Link>
             </Card.Text>
           </Card.Body>
