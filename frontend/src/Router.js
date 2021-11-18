@@ -3,6 +3,8 @@ import {HashRouter, Route, Switch} from 'react-router-dom';
 import mainView from './views/mainView';
 import Products from "./views/productView";
 import TempView from "./views/tempView";
+import LoginView from "./views/loginView";
+import RegisterView from "./views/registerView";
 
 const BasicRoute = () => (
     <HashRouter>
@@ -10,6 +12,8 @@ const BasicRoute = () => (
             <Route exact path="/" component={mainView}/>
             <Route exact path="/product/:id" component={Products}/>
             <Route exact path="/TempView" component={TempView}/>
+            <Route exact path="/LoginView" component={LoginView}/>
+            <Route exact path="/RegisterView" component={RegisterView}/>
         </Switch>
     </HashRouter>
 );

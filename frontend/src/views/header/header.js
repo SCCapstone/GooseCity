@@ -26,8 +26,8 @@ function TableToolbar() {
         <div>
         </div>
         <Nav>
-          <Nav.Link href="#/TempView">log in </Nav.Link>
-          <Nav.Link eventKey={2} href="#/TempView">
+          <Nav.Link href="#/LoginView">log in </Nav.Link>
+          <Nav.Link eventKey={2} href="#/RegisterView">
             register
           </Nav.Link>
         </Nav>
