@@ -30,5 +30,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('apiv2/login', views.login),
     path('apiv2/register', views.register),
+    path('addcart/', views.add_cart),
+    path('rmcart/', views.remove_cart),
 
 ]
