@@ -3,47 +3,33 @@ import { Form, Button,Nav } from "react-bootstrap";
 import axios from "axios";
 import TableToolbar from "./header/header";
 
-class LoginView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      pwd: "",
-    };
-  }
 
-  handelEmail = (e) => {
-    this.setState({
-      email: e.target.value,
-    });
-  };
-  handelPwd = (e) => {
-    this.setState({
-      pwd: e.target.value,
-    });
-  };
+export default function LoginView () {
 
-  handelSubmit = (e) => {
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
+
+  const handelSubmit = async  e => {
     e.preventDefault();
 
     let data = new FormData();
-    data.append("email", this.state.email);
-    data.append("password", this.state.pwd);
+    data.append("email", username);
+    data.append("password", password);
+    console.log(data);
     axios.post(`http://localhost:8000/apiv2/login`, data).then((res) => {
       console.log("res=>", res);
+      localStorage.setItem('token', JSON.stringify(res.data.token));
+      window.location.reload(false);
     });
-
-    console.log(this.state.email, this.state.pwd);
   };
-
-  render() {
+    console.log(window.localStorage.token === undefined);
     return (
       <main>
         <header>
           {TableToolbar()}
         </header>
         <Form
-            onSubmit={this.handelSubmit}
+            onSubmit={handelSubmit}
             style={{ width: "300px", margin: "0 auto", marginTop: "100px" }}
         >
           <h1 style={{ margin: "10px 80px" }}>Log in</h1>
@@ -52,8 +38,7 @@ class LoginView extends Component {
             <Form.Control
                 type="email"
                 placeholder="Enter email"
-                value={this.state.email}
-                onChange={this.handelEmail}
+                onChange={e => setUserName(e.target.value)}
             />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
@@ -65,8 +50,7 @@ class LoginView extends Component {
             <Form.Control
                 type="password"
                 placeholder="Password"
-                value={this.state.pwd}
-                onChange={this.handelPwd}
+                onChange={e => setPassword(e.target.value)}
             />
           </Form.Group>
           <br />
@@ -89,7 +73,6 @@ class LoginView extends Component {
         </Form>
       </main>
     );
-  }
 }
-export default LoginView;
+
 

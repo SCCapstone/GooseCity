@@ -14,14 +14,15 @@ class TodoView(viewsets.ModelViewSet):
     serializer_class = TodoSerializer
     queryset = Todo.objects.all()
 
+
 class userView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
             
 
- 
 def hello(request):
     return HttpResponse("Hello world ! ")
+
 
 def login(request):
     email = request.POST.get("email")
@@ -31,11 +32,10 @@ def login(request):
         res_data = {"errorMsg":"unautharized"}
         return HttpResponse(json.dumps(res_data),content_type="application/json",status=401)
     else:
-        res_data = {"errorMsg":"success"}
+        res_data = {"token":email}
         return HttpResponse(json.dumps(res_data),content_type="application/json",status=200)
 
-              
-    
+
 def register(request):
     email = request.POST.get("email")
     pwd = request.POST.get("password")
