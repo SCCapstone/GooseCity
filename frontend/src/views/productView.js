@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {Image, Table} from "react-bootstrap";
+import {Image, NavDropdown, Table} from "react-bootstrap";
 import axios from "axios";
+import {Button} from "@material-ui/core";
 
 
 const Products = (props) => {
@@ -18,6 +19,38 @@ const Products = (props) => {
         return <div className="App">Loading...</div>;
     }
     console.log(props);
+
+    const addCart = async e=>{
+        e.preventDefault();
+        let data = new FormData();
+        let token = window.localStorage.token.replace(/^\"|\"$/g,'');
+        data.append("token", token);
+        data.append("id", props.match.params.id);
+        console.log(data);
+        axios.post("http://localhost:8000/addcart/",data).then(res => {
+            console.log(res);
+            if (res.status===200)
+                alert("added to cart!");
+            else
+                alert.error("error!")
+        });
+    }
+        const rmCart = async e=>{
+        e.preventDefault();
+        let data = new FormData();
+        let token = window.localStorage.token.replace(/^\"|\"$/g,'');
+        data.append("token", token);
+        data.append("id", props.match.params.id);
+        console.log(data);
+        axios.post("http://localhost:8000/rmcart/",data).then(res => {
+            console.log(res);
+            if (res.status===200)
+                alert("removed from cart!");
+            else
+                alert("error!")
+        });
+    }
+
   return (
     <div>
       <Link className="btn btn-primary" to={{
@@ -25,6 +58,14 @@ const Products = (props) => {
         }}>
           Go Back
       </Link>
+        {
+            window.localStorage.token === undefined ?
+            null : <Button onClick={addCart}> add Cart</Button>
+        }
+        {
+            window.localStorage.token === undefined ?
+            null : <Button onClick={rmCart}> remove Cart</Button>
+        }
       <div className="form-details">
         <div>
           <Image src={data.image} rounded />

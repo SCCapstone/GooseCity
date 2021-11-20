@@ -32,7 +32,7 @@ def login(request):
             res_data = {"errorMsg":"unautharized"}
             return HttpResponse(json.dumps(res_data),content_type="application/json",status=200)
         else:
-            res_data = {"errorMsg":"success"}
+            res_data = {"errorMsg":"success", "token":email}
             return HttpResponse(json.dumps(res_data),content_type="application/json",status=200)
     except:
         res_data = {"errorMsg":"unautharized"}
@@ -53,8 +53,31 @@ def register(request):
         return HttpResponse(json.dumps(res_data),content_type="application/json",status=200)
     else:
         res_data = {"errorMsg":"User Already Exists"}
-        return HttpResponse(json.dumps(res_data),content_type="application/json",status=200)
+        return HttpResponse(json.dumps(res_data),content_type="application/json",status=401)
 
+
+def add_cart(request):
+    email = request.POST.get("token")
+    id = request.POST.get("id")
+    user = User.objects.get(email=email)
+    user.shoppingCard.append(id)
+    user.save()
+    res_data = {"resMsg": "success"}
+    return HttpResponse(json.dumps(res_data), content_type="application/json", status=200)
+
+
+def remove_cart(request):
+    email = request.POST.get("token")
+    id = request.POST.get("id")
+    user = User.objects.get(email=email)
+    if id in user.shoppingCard:
+        user.shoppingCard.remove(id)
+        user.save()
+        res_data = {"resMsg": "success removed"}
+        return HttpResponse(json.dumps(res_data), content_type="application/json", status=200)
+    else:
+        res_data = {"resMsg": "it is not in cart"}
+        return HttpResponse(json.dumps(res_data), content_type="application/json", status=201)
 
         
 
