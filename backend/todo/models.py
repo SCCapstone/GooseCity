@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.postgres.fields import JSONField
 
 
 # Create your models here.
@@ -15,11 +14,9 @@ class Todo(models.Model):
     def _str_(self):
         return self.product_name
 
-
 class User(models.Model):
     email = models.CharField(max_length=120)
     password = models.CharField(max_length=120)
-    shoppingCard = JSONField(default=[])
 
     def _str_(self):
         return self.email

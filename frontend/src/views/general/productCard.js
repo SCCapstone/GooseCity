@@ -1,7 +1,10 @@
 import React, { Component, useState } from "react";
+import Modal from "../../components/Modal";
 import {Card, Col, Form, Row} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import TableToolbar from "../header/header";
+import {Button} from "bootstrap";
 
 
 class ProductCard extends Component {
@@ -41,6 +44,7 @@ class ProductCard extends Component {
   };
 
   handleSubmit = (item) => {
+    //this.toggle();
 
     if (item.id) {
       item.free_returns = !item.free_returns;
@@ -105,7 +109,7 @@ class ProductCard extends Component {
     const newItems = this.state.todoList.filter(
       (item) => item.free_returns === viewCompleted
     );
-
+    // const newItems = this.state.todoList;
     return  (
       <Row  className="g-4" >
       { newItems.slice(0,10).map((item) => (
@@ -116,7 +120,9 @@ class ProductCard extends Component {
 
           <Card.Body>
             <Card.Title class="border-top">{item.product_name}</Card.Title>
-
+            {/*<Card.Text class="border-top">*/}
+            {/*  This is a longer card with supporting text*/}
+            {/*</Card.Text>*/}
             <Card.Text class="border-top">
               {"$"+item.prices.match(/\d+(.\d+)?/g)[0]}
             </Card.Text>
