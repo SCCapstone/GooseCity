@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Component, useState } from "react";
 import ProductCard from "./general/productCard";
 import TableToolbar from "./header/header";
 import ControlledCarousel from "./general/controlled"
 import FooterPage from "./footer/footer"
+import {Link} from "react-router-dom";
 
 
-function MainView() {
+class MainView extends Component {
 
+  render() {
     return (
       <main className="container-fluid">
         <header>
@@ -30,7 +32,7 @@ function MainView() {
          < FooterPage/>
       </main>
     );
-
+  }
 }
 
 export default MainView;
