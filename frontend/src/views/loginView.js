@@ -2,6 +2,8 @@ import React, { Component, useState } from "react";
 import { Form, Button, Nav, Toast } from "react-bootstrap";
 import axios from "axios";
 import TableToolbar from "./header/header";
+import { Redirect } from 'react-router-dom';
+
 
 class LoginView extends Component {
   constructor(props) {
@@ -39,6 +41,18 @@ class LoginView extends Component {
           showSuccess:true,
           showError:false,
         })
+        localStorage.setItem('token', JSON.stringify(res.data.token));
+        //window.location.reload(false);
+        if(window.localStorage.token === undefined)
+        {
+          console.log(window.localStorage.token);
+          console.log('Not Redirecting');
+        }
+        else
+          console.log('Redirecting');
+          console.log(window.localStorage.token);
+          //this.props.history.goBack();
+          this.props.history.push('/');
       }else{
         this.setState({
           showError:true,
@@ -55,7 +69,7 @@ class LoginView extends Component {
     return (
      <main>
        <header>
-         {TableToolbar()}
+         <TableToolbar/>
        </header>
        <Form
            onSubmit={this.handelSubmit}

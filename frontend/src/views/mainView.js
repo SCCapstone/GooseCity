@@ -3,7 +3,6 @@ import ProductCard from "./general/productCard";
 import TableToolbar from "./header/header";
 import ControlledCarousel from "./general/controlled"
 import FooterPage from "./footer/footer"
-import {Link} from "react-router-dom";
 
 
 class MainView extends Component {
@@ -12,7 +11,8 @@ class MainView extends Component {
     return (
       <main className="container-fluid">
         <header>
-            {TableToolbar()}
+            {/*{TableToolbar}*/}
+            <TableToolbar/>
         </header>
         <div className="col-md-12 col-sm-10 mx-auto p-0">
             <ControlledCarousel />

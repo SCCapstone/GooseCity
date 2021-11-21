@@ -14,14 +14,15 @@ class TodoView(viewsets.ModelViewSet):
     serializer_class = TodoSerializer
     queryset = Todo.objects.all()
 
+
 class userView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
-            
 
  
 def hello(request):
     return HttpResponse("Hello world ! ")
+
 
 def login(request):
     email = request.POST.get("email")
@@ -29,30 +30,27 @@ def login(request):
     try:
         user = User.objects.get(email=email)
         if(user is None or (user.password!=pwd)):
-            res_data = {"errorMsg":"unautharized"}
-            return HttpResponse(json.dumps(res_data),content_type="application/json",status=200)
+            res_data = {"errorMsg": "unautharized"}
+            return HttpResponse(json.dumps(res_data), content_type="application/json",status=200)
         else:
-            res_data = {"errorMsg":"success", "token":email}
-            return HttpResponse(json.dumps(res_data),content_type="application/json",status=200)
+            res_data = {"errorMsg": "success", "token":email}
+            return HttpResponse(json.dumps(res_data), content_type="application/json",status=200)
     except:
-        res_data = {"errorMsg":"unautharized"}
-        return HttpResponse(json.dumps(res_data),content_type="application/json",status=200)
+        res_data = {"errorMsg": "unautharized"}
+        return HttpResponse(json.dumps(res_data), content_type="application/json",status=200)
 
-
-
-              
     
 def register(request):
     email = request.POST.get("email")
     pwd = request.POST.get("password")
     queryset = User.objects.all()
     user = User.objects.filter(email=email)
-    if len(user)==0:
-        User(len(queryset)+1,email,pwd).save()
-        res_data = {"errorMsg":"success"}
+    if len(user) == 0:
+        User(len(queryset)+1, email, pwd).save()
+        res_data = {"errorMsg": "success"}
         return HttpResponse(json.dumps(res_data),content_type="application/json",status=200)
     else:
-        res_data = {"errorMsg":"User Already Exists"}
+        res_data = {"errorMsg": "User Already Exists"}
         return HttpResponse(json.dumps(res_data),content_type="application/json",status=401)
 
 
