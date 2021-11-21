@@ -79,7 +79,7 @@ class RegisterView extends Component {
     return (
       <main>
         <header>
-          {TableToolbar()}
+          <TableToolbar/>
         </header>
         <Form
             onSubmit={this.handelSubmit}
