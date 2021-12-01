@@ -3,6 +3,10 @@ import {Link} from "react-router-dom";
 import {Image, NavDropdown, Table} from "react-bootstrap";
 import axios from "axios";
 import {Button} from "@material-ui/core";
+import FooterPage from "./footer/footer"
+import TableToolbar from "./header/header";
+import MainView from "./mainView";
+import ProductCard from "./general/productCard";
 
 
 const Products = (props) => {
@@ -52,62 +56,92 @@ const Products = (props) => {
     }
 
   return (
-    <div>
-      <Link className="btn btn-primary" to={{
-          pathname: "/",
-        }}>
-          Go Back
-      </Link>
-        {
-            window.localStorage.token === undefined ?
-            null : <Button onClick={addCart}> add Cart</Button>
-        }
-        {
-            window.localStorage.token === undefined ?
-            null : <Button onClick={rmCart}> remove Cart</Button>
-        }
-      <div className="form-details">
-        <div>
-          <Image src={data.image} rounded />
-        </div>
-        <div>
-          <a href={data.link}>Ebay Link</a>
-        </div>
+    <main className="container-fluid">
+       
+    <header>
+        {/*{TableToolbar}*/}
+        <TableToolbar/>
+    </header>
+  
+<div>
+  <div>
+  <Link className="btn btn-primary" to={{
+      pathname: "/",
+    }}>
+      Main page
+  </Link>
+  </div>
+  
+    <span style={{paddingLeft: 650}}>
+      
+      
+      <Image src={data.image} style={{width:200, hight:200}} rounded />
+      
+      
+    </span>
 
-      </div>
-      <Table striped bordered hover>
-        <thead>
-           <tr>
-            <th> </th>
-                <th colSpan="3">Info</th>
+    <Table striped bordered hover style={{width:300, hight:300}} align="center" >
+      <thead type="thead" className="success">
+        <th class="bg-info">Price</th>
+      </thead>
+      <tbody>
+        <tr class="warning">
+          <td>${data.prices.match(/\d+(.\d+)?/g)[0]} </td>
           </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td>product name</td>
-              <td colSpan="2">{data.product_name}</td>
-            </tr>
-            <tr>
-              <td>description</td>
-              <td colSpan="2">{data.description}</td>
-            </tr>
-            <tr>
-              <td>condition</td>
-              <td colSpan="2">{data.condition}</td>
-            </tr>
-              <tr>
-              <td>prices</td>
-              <td colSpan="2">{data.prices}</td>
-            </tr>
-            <tr>
-              <td>id</td>
-              <td colSpan="2">{props.match.params.id}</td>
-            </tr>
-        </tbody>
-      </Table>
+      </tbody>
+    </Table>
+
+
+    <span style={{paddingLeft: 1000}}> 
+    {
+        window.localStorage.token === undefined ?
+        null : <Button type="button"  class="btn btn-warning" onClick={addCart}> add Cart</Button>
+    }
+    </span> 
+    <span  style={{paddingTop: 100}}>
+    {
+        window.localStorage.token === undefined ?
+        null : <Button type="button" class="btn-primary" onClick={rmCart}> Buy Now!</Button>
+    }
+  </span> 
+    <div  className="row" style={{paddingRight : 800 , paddingLeft : 800}}>
+      <a class="btn btn-info" href={data.link}>Ebay Link</a>
+      
   </div>
 
-  );
+  </div>
+  
+
+
+  <Table striped bordered hover style={{width:1000, hight:1000}} align="center">
+    <thead >
+       <tr>
+        <th> </th>
+            <th colSpan="3">Info</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>product name</td>
+          <td colSpan="2">{data.product_name}</td>
+        </tr>
+        <tr>
+          <td>description</td>
+          <td colSpan="2">{data.description}</td>
+        </tr>
+        <tr>
+          <td>condition</td>
+          <td colSpan="2">{data.condition}</td>
+        </tr>
+          
+        
+    </tbody>
+  </Table>
+  < FooterPage/>
+</main>
+
+
+);
 };
 
 export default Products;
