@@ -39,17 +39,15 @@ const Products = (props) => {
                 alert.error("error!")
         });
     }
-        const rmCart = async e=>{
+        const Purchase = async e=>{
         e.preventDefault();
         let data = new FormData();
-        let token = window.localStorage.token.replace(/^\"|\"$/g,'');
-        data.append("token", token);
         data.append("id", props.match.params.id);
         console.log(data);
-        axios.post("http://localhost:8000/rmcart/",data).then(res => {
+        axios.post("http://localhost:8000/#/TempView",data).then(res => {
             console.log(res);
             if (res.status===200)
-                alert("removed from cart!");
+                alert("Purchase! Thank you!");
             else
                 alert("error!")
         });
@@ -71,14 +69,15 @@ const Products = (props) => {
       Main page
   </Link>
   </div>
-  
-    <span style={{paddingLeft: 650}}>
+   
+   
+    <div  className="row" style="center">
       
       
-      <Image src={data.image} style={{width:200, hight:200}} rounded />
+      <Image src={data.image} style={{width:200, hight:200}}  rounded />
       
       
-    </span>
+    </div>
 
     <Table striped bordered hover style={{width:300, hight:300}} align="center" >
       <thead type="thead" className="success">
@@ -101,7 +100,7 @@ const Products = (props) => {
     <span  style={{paddingTop: 100}}>
     {
         window.localStorage.token === undefined ?
-        null : <Button type="button" class="btn-primary" onClick={rmCart}> Buy Now!</Button>
+        null : <Button type="button" class="btn-primary" onClick={Purchase}> Buy Now!</Button>
     }
   </span> 
     <div  className="row" style={{paddingRight : 800 , paddingLeft : 800}}>

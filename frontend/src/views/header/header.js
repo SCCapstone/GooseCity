@@ -59,7 +59,7 @@ class TableToolbar extends Component{
                         }
                         {
                             window.localStorage.token === undefined ?
-                                null : <NavDropdown.Item href="#/TempView">My Cart</NavDropdown.Item>
+                                null : <NavDropdown.Item href="#/shoppingCard">My Cart</NavDropdown.Item>
                         }
                     <NavDropdown.Item href="#/LoginView" onClick={this.logout}>log out</NavDropdown.Item>
                   </NavDropdown>
