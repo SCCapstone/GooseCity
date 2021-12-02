@@ -5,6 +5,7 @@ import Products from "./views/productView";
 import TempView from "./views/tempView";
 import LoginView from "./views/loginView";
 import RegisterView from "./views/registerView";
+import ShoppingCard from "./views/shoppingCardView/shoppingCardView"
 
 const BasicRoute = () => (
     <HashRouter>
@@ -14,6 +15,7 @@ const BasicRoute = () => (
             <Route exact path="/TempView" component={TempView}/>
             <Route exact path="/LoginView" component={LoginView}/>
             <Route exact path="/RegisterView" component={RegisterView}/>
+            <Route exact path="/shoppingCard" component={ShoppingCard}/>
         </Switch>
     </HashRouter>
 );

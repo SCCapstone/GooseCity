@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from .serializers import TodoSerializer,UserSerializer
-from .models import Todo,User
+from .models import Todo, User
 from django.http import HttpResponse
 import json
 # Create your views here.
@@ -77,6 +77,26 @@ def remove_cart(request):
         res_data = {"resMsg": "it is not in cart"}
         return HttpResponse(json.dumps(res_data), content_type="application/json", status=201)
 
-        
+
+def get_chopping_card(request):
+    email = request.POST.get("token")
+    print(email)
+    user = User.objects.get(email=email)
+    product_list = user.shoppingCard
+    res_data = []
+    for index in range(len(product_list)):
+        product = Todo.objects.filter(id=product_list[index])
+        info = {
+            "id": product[0].id,
+            "product_name": product[0].product_name,
+            "description": product[0].description,
+            "link": product[0].link,
+            "image": product[0].image,
+            "condition": product[0].condition,
+            "prices": product[0].prices,
+            "free_returns": product[0].free_returns,
+        }
+        res_data.append(info)
+    return HttpResponse(json.dumps(res_data), content_type="application/json", status=200)
 
 

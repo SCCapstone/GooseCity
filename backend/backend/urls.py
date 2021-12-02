@@ -32,5 +32,6 @@ urlpatterns = [
     path('apiv2/register', views.register),
     path('addcart/', views.add_cart),
     path('rmcart/', views.remove_cart),
+    path('getshoppingcard/', views.get_chopping_card),
 
 ]
