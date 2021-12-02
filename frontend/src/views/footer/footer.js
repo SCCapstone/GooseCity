@@ -15,19 +15,22 @@ const FooterPage = () => {
       </div>
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
-        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <h6 class="text-uppercase font-weight-bold">Author</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}}/>
         <p>
-          <a href="#/TempView" style={{color : "black", textDecoration: "none"}}>MDBootstrap</a>
+          <a href="#/TempView" style={{color : "black", textDecoration: "none"}}>zzhuo@email.sc.edu</a>
         </p>
         <p>
-          <a href="#/TempView" style={{color : "black", textDecoration: "none"}}>MDWordPress</a>
+          <a href="#/TempView" style={{color : "black", textDecoration: "none"}}>cuic@email.sc.edi</a>
         </p>
         <p>
-          <a href="#/TempView" style={{color : "black", textDecoration: "none"}}>BrandFlow</a>
+          <a href="#/TempView" style={{color : "black", textDecoration: "none"}}>xren@email.sc.edu</a>
         </p>
         <p>
-          <a href="#/TempView" style={{color : "black", textDecoration: "none"}}>Bootstrap Angular</a>
+          <a href="#/TempView" style={{color : "black", textDecoration: "none"}}>jiabei@email.sc.edu</a>
+        </p>
+        <p>
+          <a href="#/TempView" style={{color : "black", textDecoration: "none"}}>weihang@email.sc.edu</a>
         </p>
 
       </div>
@@ -65,10 +68,6 @@ const FooterPage = () => {
           <i class="fas fa-print mr-3"></i> + 00 000 000 00</p>
       </div>
     </div>
-  </div>
-
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/" style={{color : "black", textDecoration: "none"}}> MDBootstrap.com</a>
   </div>
 </footer>
 

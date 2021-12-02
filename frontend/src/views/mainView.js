@@ -29,7 +29,7 @@ class MainView extends Component {
             </div>
           </div>
         </div>
-         < FooterPage/>
+         <FooterPage/>
       </main>
     );
   }
