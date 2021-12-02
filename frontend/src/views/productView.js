@@ -43,8 +43,10 @@ const Products = (props) => {
         e.preventDefault();
         let data = new FormData();
         data.append("id", props.match.params.id);
+        data.append("token", token);
+        data.append("id", props.match.params.id);
         console.log(data);
-        axios.post("http://localhost:8000/#/TempView",data).then(res => {
+        axios.post("http://localhost:3000/#/TempView",data).then(res => {
             console.log(res);
             if (res.status===200)
                 alert("Purchase! Thank you!");
