@@ -39,22 +39,7 @@ const Products = (props) => {
                 alert.error("error!")
         });
     }
-        const Purchase = async e=>{
-        e.preventDefault();
-        let data = new FormData();
-        data.append("id", props.match.params.id);
-       
         
-        console.log(data);
-        axios.post("http://localhost:3000/#/TempView",data).then(res => {
-            console.log(res);
-            if (res.status===200)
-                alert("Purchase! Thank you!");
-            else
-                alert("error!")
-        });
-    }
-
   return (
     <main className="container-fluid">
        
@@ -102,7 +87,13 @@ const Products = (props) => {
     <span  style={{paddingTop: 100}}>
     {
         window.localStorage.token === undefined ?
-        null : <Button type="button" class="btn-primary" onClick={Purchase}> Buy Now!</Button>
+        null : <span>
+        <Link className="btn btn-primary" to={{
+            pathname: "/",
+          }}>
+            Buy Now!
+        </Link>
+        </span>
     }
   </span> 
     <div  className="row" style={{paddingRight : 800 , paddingLeft : 800}}>
