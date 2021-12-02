@@ -103,7 +103,6 @@ class ProductCard extends Component {
   };
 
 
-
   renderItems = () => {
     const { viewCompleted } = this.state;
     const newItems = this.state.todoList.filter(
@@ -112,7 +111,7 @@ class ProductCard extends Component {
     // const newItems = this.state.todoList;
     return  (
       <Row  className="g-4" >
-      { newItems.slice(0,10).map((item) => (
+      { newItems.slice(0,20).map((item) => (
       <Col>
         <Card style={{ height : '27rem', width : '18rem'}}>
           <img class="card-img-fluid" src={item.image} alt="..."
