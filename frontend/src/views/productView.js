@@ -73,13 +73,13 @@ const Products = (props) => {
   </div>
    
    
-    <div  className="row" style="center">
+  <span style={{paddingLeft: 650}}>
       
       
-      <Image src={data.image} style={{width:200, hight:200}}  rounded />
+      <Image src={data.image} style={{width:200, hight:200}} rounded />
       
       
-    </div>
+    </span>
 
     <Table striped bordered hover style={{width:300, hight:300}} align="center" >
       <thead type="thead" className="success">
