@@ -12,7 +12,6 @@ Requires pipenv, React, Django, Node.js.
 
 * [Django](https://www.djangoproject.com/)
 * [Node.js](https://nodejs.org/en/)
-* [MongoDB](https://www.mongodb.com/)
 * [pipenv](https://pypi.org/project/pipenv/)
 
 ## Setup
