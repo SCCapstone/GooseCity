@@ -1,0 +1,176 @@
+{% load static %}
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome Page-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="stylesheet" href="{% static 'administrator/css/font.css' %}">
+        <link rel="stylesheet" href="{% static 'administrator/css/xadmin.css' %}">
+        <script src="{% static 'administrator/lib/layui/layui.js' %}" charset="utf-8"></script>
+        <script type="text/javascript" src="{% static 'administrator/js/xadmin.js'%}"></script>
+        <script type="text/javascript" src="{% static 'administrator/js/echarts.min.js'%}"></script>
+        <!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+               
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">Statistics</div>
+                        <div class="layui-card-body ">
+                            <ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">
+                                
+								<li class="layui-col-md2 layui-col-xs6">
+                                   
+                                </li>
+								<li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>Number of products in the system</h3>
+                                        <p>
+                                            <cite>{{ info.product_count }}</cite></p>
+{#                                            <cite>3115</cite></p>#}
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>Number of users</h3>
+                                        <p>
+                                            <cite>{{ info.user_count }}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>Number of Administrators</h3>
+                                        <p>
+                                            <cite>{{ info.admin_count }}</cite></p>
+                                    </a>
+                                </li>
+                                <li class="layui-col-md2 layui-col-xs6">
+                                    <a href="javascript:;" class="x-admin-backlog-body">
+                                        <h3>User Engagement Products</h3>
+                                        <p>
+                                            <cite>{{ info.score_count }}</cite></p>
+                                    </a>
+                                </li>
+                            
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">数据展示</div>
+                        <div class="layui-card-body " style="width:100%;height:400px;">
+							 <div id="movie" style="background:transparent;width: 50%;height:400px;margin-left:2%;margin-right:2%;float:left;"></div>
+							<script type="text/javascript">
+								// Initialize the echarts instance based on the prepared dom
+								var myChart = echarts.init(document.getElementById('movie'));
+
+								// Specify the configuration items and data for the chart
+								option = {
+									title: {
+										text: 'Product information upload volume'
+									},
+									tooltip: {},
+									legend: {
+										//data:['Sales']
+									},
+									xAxis: {
+										data: {{ data_list|safe }}
+									},
+									yAxis: {},
+									series: [{
+										name: 'Number of product uploads',
+										type: 'bar',
+										data: {{ count_list|safe }}
+									}]
+								};
+
+								// Display charts using the configuration items and data just specified。
+								myChart.setOption(option);
+							</script>
+							 <div id="people" style="background:transparent;width:35%;height:400px;float:left;"></div>
+							 <script type="text/javascript">
+								// Initialize the echarts instance based on the prepared dom
+								var myChart = echarts.init(document.getElementById('people'));
+
+								// Specify the configuration items and data for the chart
+								option = {
+									title: {
+										text: 'Administrators and users',
+										subtext: 'Database information',
+										left: 'right'
+									},
+									tooltip: {
+										trigger: 'item',
+										formatter: '{a} <br/>{b} : {c} ({d}%)'
+									},
+									legend: {
+										orient: 'vertical',
+										left: 'left',
+										//data: ['管理员数量', '用户数量',]
+									},
+									series: [
+										{
+											name: '属性',
+											type: 'pie',
+											radius: '55%',
+											center: ['50%', '60%'],
+											data: [
+												{value: {{ info.admin_count }}, name: 'Number of admins'}, {value: {{ info.user_count }}, name: 'Number of admins'},
+												{value:{{ info.user_count }}, name: 'Number of users'},
+											   
+											],
+											emphasis: {
+												itemStyle: {
+													shadowBlur: 10,
+													shadowOffsetX: 0,
+													shadowColor: 'rgba(0, 0, 0, 0.5)'
+												}
+											}
+										}
+									]
+								};
+
+
+								// Display the chart using the configuration items and data just specified.
+								myChart.setOption(option);
+							</script>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">Development Team</div>
+                        <div class="layui-card-body ">
+                            <table class="layui-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Copyright</th>.
+                                        <td>
+											Goose City
+										</td>
+                                    </tr>
+                                    <tr>
+                                        <th>I am the best</th>
+                                        <td>I am the best</td></tr
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <style id="welcome_style"></style>
+                
+            </div>
+        </div>
+        </div>
+    </body>
+</html>

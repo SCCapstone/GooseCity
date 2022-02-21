@@ -1,0 +1,42 @@
+{% load static %}
+<html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="/static/layui/layui.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
+	 <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+		<style>
+			input{
+				border:none;
+				background:none;
+				outline:none;
+			}
+	</style>
+	<!-- Custom Theme files -->
+	<link href="/static/login/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/static/login/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- //Custom Theme files -->
+    {% block script %}
+    {% endblock %}
+</head>
+<body>
+
+{% block content %}
+
+{% endblock %}
+
+
+</body>
+</html>

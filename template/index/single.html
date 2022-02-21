@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Sailor - Bootstrap 3 corporate template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Bootstrap 3 template for corporate business" />
+	<!-- css -->
+	<link href="/static/index/search/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/static/index/search/css/cubeportfolio.min.css" rel="stylesheet" />
+	<link href="/static/index/search/css/style.css" rel="stylesheet" />
+    <link href="/static/user/css/materialdesignicons.min.css" rel="stylesheet">
+	<!-- Theme skin -->
+	<link id="t-colors" href="/static/index/search/skins/default.css" rel="stylesheet" />
+    <script src="/static/index/search/js/jquery.min.js"></script>
+	<!-- boxed bg -->
+
+
+	
+</head>
+
+<body>
+
+
+	<div id="wrapper">
+		<!-- start header -->
+
+		<section id="inner-headline">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<ul class="breadcrumb">
+							<li><a href="{% url 'home:index' %}">Home</a></li>
+							<li><a href="#">Product Detail Page</a><i class="icon-angle-right"></i></li>
+							<li class="active">Information Display</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="searchtitle">
+
+						</div>
+						<article>
+							<div class="post-image">
+								<div class="post-heading">
+									<h3><a href="#">{{ info.product.productname }}</a></h3>
+								</div>
+								<img src="/static/{{ info.product.image }}" alt="" class="img-responsive" />
+							</div>
+							<p>
+								{{ info.product.desc }}
+							</p>
+                            <p style="color:red;float:right;">价格:{{ info.product.price }}</p>
+                        <button id="cart" class="btn {% if cart_demo %}btn btn-cyan{% else %}btn btn-default{% endif %}"><i class="mdi mdi-tag-text-outline"></i>Add to Cart</button>
+                        <button id="buy" class="btn btn-default"><i class="mdi mdi-tag-heart"></i>Purchase</button>
+                            <script>
+                                $("#cart").click(function () {
+                                    if($(this).hasClass("btn-cyan")){
+                                        $(this).removeClass("btn-cyan");
+                                        $(this).addClass("btn-default");
+                                        $.ajax({
+                                            url:{% url 'home:delete_cart' %},
+                                            type:"get",
+                                            data:{
+                                                "productid":"{{ info.product.id }}"
+                                            },
+                                            success:function (data) {
+                                                console.log(data)
+                                            },
+                                            error:function(){
+                                                 alert("System Error")
+                                            }
+                                        })
+
+
+                                    }
+                                    else{
+                                        $(this).addClass("btn-cyan");
+                                        $(this).removeClass("btn-default");
+                                        $.ajax({
+                                            url:{% url 'home:add_cart' %},
+                                            type:"get",
+                                            data:{
+                                                "productid":"{{ info.product.id }}"
+                                            },
+                                            success:function (data) {
+                                                console.log(data)
+                                            },
+                                            error:function(){
+                                                alert("System Error")
+                                            }
+                                        })
+                                    }
+
+                                })
+                            </script>
+						</article>
+
+					</div>
+
+					<div class="col-lg-4">
+						<aside class="right-sidebar">
+							<div class="widget">
+
+							</div>
+							<div class="widget">
+								<h5 class="widgetheading">Rating</h5>
+								<ul class="cat" style="margin-bottom:109px;">
+                                    {% for item in info.username %}
+                                    <div class="dropdown" style="float:left;margin-left:9px;margin-bottom:10px;">
+                                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                                                data-toggle="dropdown">
+                                            {{ item.user_id.username }}
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+                                            <li role="presentation" >
+                                                <a role="menuitem" tabindex="-1" href="#">{{ item.score }}</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    {% endfor %}
+
+								</ul>
+
+
+                                <form class="form-horizontal" role="form" action="{% url 'home:detail_page' %}" method="post">
+
+                                  <div class="form-group">
+
+                                    <div class="col-sm-10">
+                                        <input  type="hidden" name="product_id" value="{{ info.product.id }}">
+                                        <input  type="hidden" name="user_id" value="{{ info.userid }}">
+                                      <input type="text" class="form-control" name="score" id="inputPassword" placeholder="Please enter your rating 00-10">
+                                    </div>
+                                      <button  class="col-sm-2 control-label  btn btn-info">Submit</button>
+                                  </div>
+                                </form>
+
+
+
+							</div>
+
+						</aside>
+					</div>
+
+				</div>
+
+
+			</div>
+		</section>
+
+
+
+	</div>
+	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+	<!-- javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<script src="/static/index/search/js/modernizr.custom.js"></script>
+	<script src="/static/index/search/js/jquery.easing.1.3.js"></script>
+	<script src="/static/index/search/js/bootstrap.min.js"></script>
+	<script src="/static/index/search/js/jquery.appear.js"></script>
+	<script src="/static/index/search/js/stellar.js"></script>
+	<script src="/static/index/search/js/classie.js"></script>
+	<script src="/static/index/search/js/uisearch.js"></script>
+	<script src="/static/index/search/js/jquery.cubeportfolio.min.js"></script>
+	<script src="/static/index/search/js/google-code-prettify/prettify.js"></script>
+	<script src="/static/index/search/js/animate.js"></script>
+	<script src="/static/index/search/js/custom.js"></script>
+
+</body>
+
+</html>
