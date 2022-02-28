@@ -47,5 +47,12 @@ python manage.py runserver
 
 #### 
 
+Administrator side：
+http://47.251.43.118:8000/backstage/index/
+account：n@163.com
+Password：1
 
+Main page:http://47.251.43.118:8000/
+Account:xiaoming
+Password:12
 
