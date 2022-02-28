@@ -7,9 +7,8 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0"> 
-	<title>Login screen</title>
+	<title>LogIn</title>
     <link href="{% static  'administrator/css/default.css' %}" rel="stylesheet" type="text/css" />
-	<!--必要样式-->
     <link href="{% static  'administrator/css/styles.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static  'administrator/css/demo.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static  'administrator/css/loaders.css' %}" rel="stylesheet" type="text/css" />
@@ -17,7 +16,7 @@
 <body>
 	<div class='login'>
 	  <div class='login_title'>
-	    <span>Backend Management System</span>
+	    <span>Back Office Management System</span>
 	  </div>
         <form >
 
@@ -27,7 +26,7 @@
 	      <div class='icon'>
 	        <img alt="" src='{% static  'administrator/img/user_icon_copy.png' %}'>
 	      </div>
-	      <input name="login" placeholder='user name' maxlength="16" type='text' autocomplete="off" value=""/>
+	      <input name="login" placeholder='ID' maxlength="16" type='text' autocomplete="off" value=""/>
 	        <div class='validation'>
 	          <img alt="" src='{% static  'administrator/img/tick.png' %}'>
 	        </div>
@@ -45,9 +44,9 @@
 	      <div class='icon'>
 	        <img alt="" src='{% static  'administrator/img/key.png' %}'>
 	      </div>
-	      <input name="code" placeholder='Verification Code' maxlength="4" type='text' name="ValidateNum" autocomplete="off">
+	      <input name="code" placeholder='code' maxlength="4" type='text' name="ValidateNum" autocomplete="off">
 	      <div class='validation' style="opacity: 1; right: -57px;top: -3px;">
-          <canvas class="J_codeimg" id="myCanvas" onclick="Code();">Sorry, your browser does not support canvas, please download the latest version of your browser!</canvas>
+          <canvas class="J_codeimg" id="myCanvas" onclick="Code();">Sorry, your browser does not support canvas, please download the latest version of your browser!!</canvas>
 	      </div>
 	    </div>
 	    <div class='login_fields__submit'>
@@ -67,7 +66,7 @@
             <div></div>
         </div>
         </div>
-	  <p>认证中...</p>
+	  <p>verifying...</p>
 	</div>
 	<div class="OverWindows"></div>
 	
@@ -81,9 +80,9 @@
     <script type="text/javascript" src="{% static  'administrator/js/Treatment.js' %}"></script>
     <script type="text/javascript" src="{% static  'administrator/js/jquery.mockjax.js' %}"></script>
 	<script type="text/javascript">
-		var canGetCookie = 0;//whether storage cookies are supported 0 not supported 1 supported
+		var canGetCookie = 0;//Whether to support storing cookies 0 No 1 Yes
 		var ajaxmockjax = 1;//Whether to enable virtual Ajax request ringing 0 not enabled 1 enabled
-		//default account password
+
 		
 		var truelogin = "123456";
 		var truepwd = "123456";
@@ -109,12 +108,11 @@
 	        ctx.fillText(a, 0, 100);
 	    }
 	    $(document).keypress(function (e) {
-	        // 回车键事件  
+
 	        if (e.which == 13) {
 	            $('input[type="button"]').click();
 	        }
 	    });
-	    //粒子背景特效
 	    $('body').particleground({
 	        dotColor: '#E8DFE8',
 	        lineColor: '#133b88'
@@ -144,28 +142,28 @@
 	    });
 	    var open = 0;
 	    layui.use('layer', function () {
-			ar msgalert = 'Welcome to the mall system' + '<br/>administrator login backend';
-    		var index = layer.alert(msgalert, { icon: 6, time: 4000, offset: 't', closeBtn: 0, title: '终于等到你', btn: [], anim: 2, shade: 0 });
+			var msgalert = 'Welcome to the mall system'  + '<br/>Administrator login back office';
+    		var index = layer.alert(msgalert, { icon: 6, time: 4000, offset: 't', closeBtn: 0, title: 'Hi!!', btn: [], anim: 2, shade: 0 });
 			layer.style(index, {
 				color: '#777'
 			}); 
-	        //Non-Null Verification
+
 	        $('input[type="button"]').click(function () {
 	            var login = $('input[name="login"]').val();
 	            var pwd = $('input[name="pwd"]').val();
 	            var code = $('input[name="code"]').val();
 	            if (login == '') {
-	                ErroAlert('Please enter your account number');
+	                ErroAlert('ID Needed');
 	            } else if (pwd == '') {
-	                ErroAlert('Please enter your password');
+	                ErroAlert('Password Needed');
 	            } else if (code == '' || code.length != 4) {
-	                ErroAlert('Enter verification code');
+	                ErroAlert('Code needed');
 	            } else {
-	                //Certification in progress...
+
 	                fullscreen();
-	                $('.login').addClass('test'); //Tilt effects
+	                $('.login').addClass('test');
 	                setTimeout(function () {
-	                    $('.login').addClass('testtwo'); //panning effects
+	                    $('.login').addClass('testtwo');
 	                }, 300);
 	                setTimeout(function () {
 	                    $('.authent').show().animate({ right: -320 }, {
@@ -179,9 +177,9 @@
 	                    }).addClass('visible');
 	                }, 500);
 
-	                //login
+
 	                var JsonData = { name: login, password: pwd, code: code };
-					//This is done here as an ajax internal judgment
+
 					var url = "";
 					console.log(JsonData);
 
@@ -195,11 +193,11 @@
 					
 	                AjaxPost(url, JsonData,
 	                                function () {
-	                                    //ajax loading in
+
 	                                },
 	                                function (data) {
-	                                    //ajax return
-	                                    //authentication complete
+
+
 
 	                                    setTimeout(function () {
 	                                        $('.authent').show().animate({ right: 90 }, {
@@ -211,17 +209,17 @@
 	                                            duration: 200,
 	                                            queue: false
 	                                        }).addClass('visible');
-	                                        $('.login').removeClass('testtwo'); //平移特效
+	                                        $('.login').removeClass('testtwo');
 	                                    }, 2000);
 	                                    setTimeout(function () {
 	                                        $('.authent').hide();
 	                                        $('.login').removeClass('test');
 	                                        if (data.exist_count == 1) {
-	                                            //Login successful
+
 	                                            $('.login div').fadeOut(100);
 	                                            $('.success').fadeIn(1000);
 	                                            $('.success').html(data.Text);
-												//Jump operations
+												//跳转操作
 												window.location.replace("{% url 'backstage:index' %}");
 	                                        } else {
 	                                            AjaxErro("Login failure");
@@ -240,7 +238,7 @@
 	        } else if (elem.requestFullScreen) {
 	            elem.requestFullscreen();
 	        } else {
-	            //Browser does not support fullscreen API or has been disabled
+
 	        }
 	    }
 		if(ajaxmockjax == 1){
@@ -248,13 +246,13 @@
 				url: 'Ajax/Login',
 				status: 200,
 				responseTime: 50,
-				responseText: {"Status":"ok","Text":"登录成功<br /><br />欢迎回来"}
+				responseText: {"Status":"ok","Text":"Login successful<br /><br />Welcome back"}
 			});
 			$.mockjax({
 				url: 'Ajax/LoginFalse',
 				status: 200,
 				responseTime: 50,
-				responseText: {"Status":"Erro","Erro":"账号名或密码或验证码有误"}
+				responseText: {"Status":"Erro","Erro":"Account name or password or verification code is wrong"}
 			});
 		}
 		if(ajaxmockjax == 0){

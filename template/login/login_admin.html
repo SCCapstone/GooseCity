@@ -1,7 +1,7 @@
 {% extends 'login_template.html' %}
 
 {% block title %}
-登录
+Log in
 {% endblock %}
 
 {% block content %}
@@ -18,11 +18,11 @@
                     {% csrf_token %}
 					<div class="icon1">
 						<span class="fa fa-user"></span>
-						<input type="text" placeholder="用户名" required="" name="username" id="username"/>
+						<input type="text" placeholder="username" required="" name="username" id="username"/>
 					</div>
 					<div class="icon1">
 						<span class="fa fa-lock"></span>
-						<input type="password" placeholder="密码" required="" name="password" id="password"/>
+						<input type="password" placeholder="password" required="" name="password" id="password"/>
 					</div>
 
 					<div class="bottom">
@@ -49,14 +49,14 @@
                             },
                             success:function(data){
                                 if(data.flag==0){
-                                    layer.msg("登录失败,请确认信息重新登录",{icon:5})
+                                    layer.msg("Login failed, please confirm the information and log in again",{icon:5})
                                 }
                                 else{
 									 $(location).attr('href', "#");
                                 }
                             },
                             error:function(e){
-                                layer.msg("系统错误",{icon:5})
+                                layer.msg("system error",{icon:5})
                             }
                         })
 

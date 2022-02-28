@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>欢迎页面-X-admin2.2</title>
+        <title>welcome page-X-admin2.2</title>
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -18,7 +18,7 @@
         <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
        <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+        <!-- Make IE8/9 support media queries to be raster compatible -->
         <!--[if lt IE 9]>
             <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
             <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -31,33 +31,33 @@
                 <form class="layui-form" action="#" method="post" enctype="multipart/form-data">
                     <div class="layui-form-item">
                         <label for="username" class="layui-form-label">
-                            <span class="x-red">*</span>产品名称</label>
+                            <span class="x-red">*</span>productname</label>
                         <div class="layui-input-inline">
                             <input  type="text" id="productname" name="productname" required="" lay-verify="required" autocomplete="off" class="layui-input"></div>
                     </div>
 
                     <div class="layui-form-item">
                        <label for="username" class="layui-form-label">
-                            <span class="x-red"></span>产品描述</label>
+                            <span class="x-red"></span>Product Description</label>
                         <div class="layui-input-inline">
                             <textarea  type="text" id="desc" name="desc" required="" lay-verify="required" autocomplete="off" class="layui-input"></textarea></div>
                     </div>
                      <div class="layui-form-item">
                        <label for="username" class="layui-form-label">
-                            <span class="x-red"></span>产品价格</label>
+                            <span class="x-red"></span>product price</label>
                         <div class="layui-input-inline">
                             <input  type="text" id="price" name="price" required="" lay-verify="required" autocomplete="off" class="layui-input"></div>
                     </div>
 
 
                     <div class="layui-form-item layui-form-text">
-                        <label for="desc" class="layui-form-label">上传产品图片</label>
+                        <label for="desc" class="layui-form-label">Upload product images</label>
                         <div class="layui-upload-drag" id="test11">
                           <i class="layui-icon"></i>
-                          <p>点击上传，或将文件拖拽到此处修改</p>
+                          <p>Click to upload, or drag and drop the file here to modify</p>
                           <div class="layui" id="uploadDemoView">
                             <hr>
-                            <img alt="上传成功后渲染"  id="preview" style="max-width: 196px">
+                            <img alt="Render after successful upload"  id="preview" style="max-width: 196px">
                           </div>
                         </div>
 
@@ -65,7 +65,7 @@
             </div>
             <div class="layui-form-item">
                 <label for="L_repass" class="layui-form-label"></label>
-               <button class="layui-btn" lay-filter="add" lay-submit="" id="commits">添加该商品</button></div>
+               <button class="layui-btn" lay-filter="add" lay-submit="" id="commits">add this item</button></div>
             </form>
             </div>
         </div>
@@ -76,12 +76,12 @@
                             var $ = layui.jquery;
                             var img_url = ''
                             upload.render({
-                                elem: '#test11', //上传图标
-                                url: '{% url 'backstage:product_add' %}',//上传地址
-                                auto: false,//选择文件后不自动上传
+                                elem: '#test11', //upload icon
+                                url: '{% url 'backstage:product_add' %}',//upload address
+                                auto: false,//Do not upload automatically after selecting a file
                                 bindAction: '#commits',
                                 size: 20000,
-                                //上传前的回调
+                                //callback before upload
                                 before: function (obj) {
                                     this.data = {
                                         productname:$('input[name="productname"]').val(),
@@ -90,7 +90,7 @@
                                     };
                                     console.log(this.data)
                                 },
-                                //选择文件后的回调
+                                //Callback after file selection
                                 choose: function (obj) {
                                     obj.preview(function (index, file, result) {
                                         console.log(file.name)
@@ -98,18 +98,18 @@
                                         $('#preview').attr('title', file.name);
                                     })
                                 },
-                                //操作成功的回调
+                                //Operation success callback
                                 done: function (res, index, upload) {
 
-                                    layer.alert("操作成功", {icon: 6}, function () {
+                                    layer.alert("Successful", {icon: 6}, function () {
                                         parent.window.location.reload();
                                     })
                                     console.log(res)
 
                                 },
-                                //上传错误回调
+                                //upload error callback
                                 error: function (res, index, upload) {
-                                    //layer.alert('上传失败！' + res);
+                                    //layer.alert('upload failed！' + res);
                                 }
                             });
                         })
@@ -123,32 +123,32 @@
                 var form = layui.form,
                 layer = layui.layer;
 
-                //自定义验证规则
+                //Custom validation rules
                 form.verify({
                     nikename: function(value) {
                         if (value.length < 5) {
-                            return '昵称至少得5个字符啊';
+                            return 'Nickname must be at least 5 characters';
                         }
                     },
-                    pass: [/(.+){6,12}$/, '密码必须6到12位'],
+                    pass: [/(.+){6,12}$/, 'Password must be 6 to 12 digits'],
                     repass: function(value) {
                         if ($('#L_pass').val() != $('#L_repass').val()) {
-                            return '两次密码不一致';
+                            return 'The two passwords do not match';
                         }
                     }
                 });
 
-                //监听提交
+                //monitor commits
                 form.on('submit(add)',
                 function(data) {
                     console.log(data);
-                    layer.alert("成功", {
+                    layer.alert("success", {
                         icon: 6
                     },
                     function() {
-                        // 获得frame索引
+                        // get frame index
                         var index = parent.layer.getFrameIndex(window.name);
-                        //关闭当前frame
+                        //close the current frame
                         parent.layer.close(index);
                     });
                     return false;

@@ -14,11 +14,11 @@
         <script type="text/javascript" src="{% static 'administrator/js/xadmin.js' %}"></script>
         <script type="text/javascript" src="{% static 'administrator/js/jquery.min.js' %}"></script>
     </head>
-    
+
     <body>
         <div class="x-nav">
 
-            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="refresh">
                 <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
             </a>
         </div>
@@ -33,9 +33,9 @@
                             <form class="layui-form layui-col-space5" style="margin:0 auto;float:right;">
                                 <div class="layui-input-inline layui-show-xs-block" >
                                     <select id="select"  name="select_type">
-                                        <option id="warning" value="-1">Select the content you want to query</option
-                                        <option value="0">Product name</option
-                                        <option value="1">Uploader name</option
+                                        <option id="warning" value="-1">Select the content you want to query</option>
+                                        <option value="0">Product name</option>
+                                        <option value="1">Uploader name</option>
                                     </select>
                                 </div>
                                 <div class="layui-input-inline layui-show-xs-block" >
@@ -109,9 +109,9 @@
                                         <td>{{info.create_at|date:"Y-m-d H:s"}}</td>
                                         <td>{{info.update_at|date:"Y-m-d H:s" }}</td>
                                         <td class="td-manage">
-                                            <a title="修改" onclick="xadmin.open('Modification','{% url 'backstage:product_change' %}?id={{ info.product_id }}')" href="javascript:;">
+                                            <a title="Modify" onclick="xadmin.open('Modification','{% url 'backstage:product_change' %}?id={{ info.product_id }}')" href="javascript:;">
                                                 <i class="layui-icon">&#xe63c;</i></a>
-                                            <a title="删除" onclick="member_del(this,{{ info.product_id }})" href="javascript:;">
+                                            <a title="Delete" onclick="member_del(this,{{ info.product_id }})" href="javascript:;">
                                                 <i class="layui-icon">&#xe640;</i></a>
                                         </td>
                                     </tr>
@@ -128,7 +128,7 @@
                                           {% if datas.has_previous %}
                                            <li>
                                             {# Click on the a tag to jump to the previous page link ?index is the parameter spliced after the address #}
-                                            <a href="{% url 'backstage:order' %}?page={{page.previous_page_number}}" >上一页</a>
+                                            <a href="{% url 'backstage:order' %}?page={{page.previous_page_number}}" >previous page</a>
                                            </li>
                                           {% else %}
                                            {# If there is no previous page, the previous page button is not clickable #}
@@ -184,7 +184,7 @@
             });
         });
 
-        /*用户-停用*/
+        /*user-deactivate*/
         function member_stop(obj, id) {
             layer.confirm('Confirm to deactivate?？',
             function(index) {

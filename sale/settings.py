@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 
-####Alipay Way
+####支付宝网关
 ALIPAY_APPID = "2021000119609704"
 ALIPAY_URL = "https://openapi.alipaydev.com/gateway.do"
 ALIPAY_DEBUG = True
@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':"sale",
         "USER":"root",
-        "PASSWORD":"nuocheng",
+        "PASSWORD":"123456",
         "PORT":3306,
         "HOST":"127.0.0.1"
     }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>产品推荐主界面</title>
+    <title>Product recommendation main interface</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -189,13 +189,13 @@
 
                     <a class="nav-link px-4 py-1 {% if forloop.counter == 1 %}active {% endif %}" id="v-pills-{{ forloop.counter }}-tab" data-toggle="pill" href="#v-pills-{{ forloop.counter }}" role="tab" aria-controls="v-pills-{{ forloop.counter }}" aria-selected="true"><span class="mr-3 flaticon-ideas"></span> {{ item.productname }}</a>
                 {% empty %}
-                    <a class="nav-link px-4 py-1 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true"><span class="mr-3 flaticon-ideas"></span> 暂未有相关信息</a>
+                    <a class="nav-link px-4 py-1 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true"><span class="mr-3 flaticon-ideas"></span> No related information yet</a>
                 {% endfor %}
 
             </div>
           </div>
           <div class="col-md-7 col-lg-9 ftco-animate p-4 p-md-5 d-flex align-items-center">
-            
+
             <div class="tab-content pl-lg-4" id="v-pills-tabContent">
             {% for item in info.last_product %}
               <div class="tab-pane fade show {% if forloop.counter == 1 %}active {% endif %}py-0 py-lg-5" id="v-pills-{{ forloop.counter }}" role="tabpanel" aria-labelledby="v-pills-{{ forloop.counter }}-tab">

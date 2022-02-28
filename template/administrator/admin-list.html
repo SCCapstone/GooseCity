@@ -18,7 +18,7 @@
     <body>
         <div class="x-nav">
 
-          <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+          <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="refresh">
             <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
         </div>
         <div class="layui-fluid">
@@ -42,8 +42,8 @@
 {#                            </form>#}
                         </div>
                         <div class="layui-card-header">
-{#                            <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>#}
-                            <button class="layui-btn" onclick="xadmin.open('添加管理员','{% url 'backstage:admin_add' %}',600,400)"><i class="layui-icon"></i>添加</button>
+{#                            <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>batch deletion</button>#}
+                            <button class="layui-btn" onclick="xadmin.open('Add administrator','{% url 'backstage:admin_add' %}',600,400)"><i class="layui-icon"></i>add</button>
                         </div>
                         <div class="layui-card-body ">
                             <table class="layui-table layui-form">
@@ -99,13 +99,13 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </body>
     <script>
       layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         var form = layui.form;
-        
+
         //Execute a laydate instance
         laydate.render({
           elem: '#start' //Specify the element
@@ -136,7 +136,7 @@
                 $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('Enabled');
                 layer.msg('activated!',{icon: 5,time:1000});
               }
-              
+
           });
       }
 
@@ -154,7 +154,7 @@
       function delAll (argument) {
 
         var data = tableCheck.getData();
-  
+
         layer.confirm('Confirm to delete?？'+data,function(index){
             // catch all selected ones and send asynchronous for deletion
             layer.msg('Deleted successfully', {icon: 1});

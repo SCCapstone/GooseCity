@@ -14,14 +14,14 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='price',
-            field=models.FloatField(default=0.0, verbose_name='价格'),
+            field=models.FloatField(default=0.0, verbose_name='price'),
         ),
         migrations.CreateModel(
             name='cart',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('num', models.IntegerField(default=1)),
-                ('flag', models.IntegerField(choices=[(0, '购物车'), (1, '购买')], default=0)),
+                ('flag', models.IntegerField(choices=[(0, 'shopping cart'), (1, 'Buy')], default=0)),
                 ('product_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cproduct', to='backstage.product')),
                 ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cuser', to='backstage.user_info')),
             ],

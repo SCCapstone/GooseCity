@@ -59,9 +59,9 @@
                 layer = layui.layer;
 
                 var flag=-1;
-                //监听提交
+                //monitor commits
                 form.verify({
-                    t_phone: [/^(?:13\d|15\d|17\d|18\d|19\d)\d{5}(\d{3}|\*{3})$/, '手机号不正确'],
+                    t_phone: [/^(?:13\d|15\d|17\d|18\d|19\d)\d{5}(\d{3}|\*{3})$/, 'Incorrect phone number'],
 
                     pass: [/(.+){1,6}$/, 'Password must be 1 to 8 digits'],
 
@@ -70,7 +70,7 @@
                 function(data) {
 
 
-                    console.log();
+                     console.log();
                     $.ajax({
                         url:"{% url 'backstage:admin_change' %}",
                         type:'post',
@@ -83,7 +83,7 @@
 
                             flag=data.flag;
                             if(flag == 1){
-                                layer.alert("修改成功", {
+                                layer.alert("Successfully modified", {
                                     icon: 6
                                 },
                                 function() {

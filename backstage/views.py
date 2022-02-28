@@ -7,19 +7,19 @@ import json
 # Create your views here.
 
 
-#判断用户是否登录
+#Determine if the user is logged in
 def exist_sess(request):
     username=request.session.get("username")
     userid=request.session.get("userid")
     flag=request.session.get("flag")
-    #判断是否存在有该用户
+    #Determine whether the user exists
     userinfo=user_info.objects.filter(id=userid,username=username,superuser=1).exists()
     return userinfo
-#退出登录
+#sign out
 def logout(request):
     request.session.flush()
     return redirect(reverse("backstage:login"))
-#登录界面
+#login interface
 def login(request):
     if request.method=='POST':
         username=request.POST.get("name")
@@ -68,7 +68,7 @@ def index(request):
         return redirect(reverse("backstage:login"))
 
 
-#产品列表
+#Product List
 def order(request):
     flag = exist_sess(request)
     if flag:
@@ -94,12 +94,12 @@ def order(request):
             page = request.GET.get('page',"1")
             try:
                 current_page = paginator.page(page)
-                # todo: 注意捕获异常
+                # todo: Be careful about catching exceptions
             except PageNotAnInteger:
-                # 如果请求的页数不是整数, 返回第一页。
+                # If the requested number of pages is not an integer, the first page is returned.
                 current_page = paginator.page(1)
             except EmptyPage:
-                # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+                # If the requested page count is not within the legal page count range, return the last page of the result.
                 books = paginator.page(paginator.num_pages)
             context={
                 "datas":current_page,
@@ -129,12 +129,12 @@ def order(request):
                 page = request.GET.get('page', "1")
                 try:
                     current_page = paginator.page(page)
-                    # todo: 注意捕获异常
+                    # todo: Be careful about catching exceptions
                 except PageNotAnInteger:
-                    # 如果请求的页数不是整数, 返回第一页。
+                    # If the requested number of pages is not an integer, the first page is returned.
                     current_page = paginator.page(1)
                 except EmptyPage:
-                    # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+                    # If the requested page count is not within the legal page count range, return the last page of the result.
                     books = paginator.page(paginator.num_pages)
                 context = {
                     "datas": current_page,
@@ -161,12 +161,12 @@ def order(request):
                 page = request.GET.get('page', "1")
                 try:
                     current_page = paginator.page(page)
-                    # todo: 注意捕获异常
+                    # todo: Be careful about catching exceptions
                 except PageNotAnInteger:
-                    # 如果请求的页数不是整数, 返回第一页。
+                    # If the requested number of pages is not an integer, the first page is returned.
                     current_page = paginator.page(1)
                 except EmptyPage:
-                    # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+                    # If the requested page count is not within the legal page count range, return the last page of the result.
                     books = paginator.page(paginator.num_pages)
                 context = {
                     "datas": current_page,
@@ -193,12 +193,12 @@ def order(request):
                 page = request.GET.get('page', "1")
                 try:
                     current_page = paginator.page(page)
-                    # todo: 注意捕获异常
+                    
                 except PageNotAnInteger:
-                    # 如果请求的页数不是整数, 返回第一页。
+                    
                     current_page = paginator.page(1)
                 except EmptyPage:
-                    # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+                    
                     books = paginator.page(paginator.num_pages)
                 context = {
                     "datas": current_page,
@@ -210,14 +210,14 @@ def order(request):
         return redirect(reverse("backstage:login"))
 
 
-#产品添加
+#product addition
 def product_add(request):
     flag = exist_sess(request)
     if flag:
         if request.method=='GET':
             return render(request,"administrator/product_add.html")
         else:
-            #首先获取登录者的信息
+            #Get the login information first
             userid=request.session.get("userid")
             user=user_info.objects.get(pk=userid)
             productname=request.POST.get("productname")
@@ -242,16 +242,16 @@ def product_add(request):
         return redirect(reverse("backstage:login"))
 
 
-#产品修改
+#Product modification
 def product_change(request):
     flag = exist_sess(request)
     if flag:
         if request.method=='GET':
-            #首先获取产品id
+            #First get the product id
             product_id=request.GET.get("id")
-            #获取商品信息
+            #Get product information
             product_demo=product.objects.get(id=product_id)
-            #商品信息获取
+            #Product information acquisition
             info={
                 "id":product_demo.id,
                 "productname":product_demo.productname,
@@ -264,7 +264,7 @@ def product_change(request):
             }
             return render(request,"administrator/product_change.html",context={"info":info})
         if request.method=='POST':
-            #首先获取产品信息
+            #Get product information first
             id=request.POST.get("id")
             productname=request.POST.get("productname")
             desc=request.POST.get("desc")
@@ -275,7 +275,7 @@ def product_change(request):
                 print("---"*20)
                 print(request.POST.get("price"))
                 price=0.0
-            #获取产品信息
+            #Get product information
             product_demo=product.objects.get(pk=id)
             if image:
                 product_demo.image=image
@@ -289,14 +289,14 @@ def product_change(request):
 
 
 
-#产品删除
+#Product removal
 def product_delete(request):
     flag = exist_sess(request)
     if flag:
         if request.method=='GET':
-            #获取产品的id
+            #Get the id of the product
             id=request.GET.get("id")
-            #获取产品信息
+            #Get product information
             product_demo=product.objects.get(pk=id)
             product_demo.delete()
             return JsonResponse({"flag":1},safe=False)
@@ -305,7 +305,7 @@ def product_delete(request):
 
 
 
-#用户管理界面
+#User management interface
 def user_list(request):
     flag = exist_sess(request)
     if flag:
@@ -316,12 +316,12 @@ def user_list(request):
     else:
         return redirect(reverse("backstage:login"))
 
-#用户删除
+#User deletion
 def user_delete(request):
     flag = exist_sess(request)
     if flag:
         if request.method == 'GET':
-            #获取用户的id
+            #Get the user's id
             id=request.GET.get("id")
             user_demo=user_info.objects.get(pk=id)
             user_demo.delete()
@@ -336,7 +336,7 @@ def user_delete(request):
 
 
 
-#用户推荐界面
+#User recommendation interface
 def member_similar(request):
     flag = exist_sess(request)
     if flag:
@@ -345,7 +345,7 @@ def member_similar(request):
         # print(list(userid_list))
         similar_information = []
         for user_id in list(userid_list):
-                # 用户相似列表，最相似的用户id，推荐的产品
+                # User similarity list, most similar user ids, recommended products
                 # print(user_id['id'])
             if score.objects.filter(user_id=user_info.objects.get(pk=user_id['id'])).exists():
                     similar_dict, similar_id, product_list = recommend(user_id['id'])
@@ -374,7 +374,7 @@ def member_similar(request):
                         info["product_info"]=product_info
                     except:
                         pass
-                        print("没有推荐的产品")
+                        print("No recommended products")
 
 
                     similar_information.append(info)
@@ -389,7 +389,7 @@ def member_similar(request):
         return redirect(reverse("backstage:login"))
 
 
-#管理员添加界面
+#Admin add interface
 def register(request):
     if request.method=='POST':
         username=request.POST.get("username")
@@ -408,7 +408,7 @@ def register(request):
             return JsonResponse({"flag":0},safe=False)
 
 
-#管理员的添加与修改
+#Administrator's Addition and Modification
 def admin_list(request):
     flag = exist_sess(request)
     if flag:
@@ -422,7 +422,7 @@ def admin_change(request):
     flag = exist_sess(request)
     if flag:
         if request.method=='GET':
-            #首先获取个人信息
+            #Get personal information first
             userid=request.session.get("userid")
             user_demo=user_info.objects.get(pk=userid)
 
@@ -468,7 +468,7 @@ def admin_add(request):
 
 
 
-#用户相似度页面，并进行产品的推荐
+#User similarity page and recommend products
 def similar(request):
     flag = exist_sess(request)
     if flag:
@@ -482,8 +482,8 @@ def similar(request):
 
 
 
-#数据分析部分
-#按照时间段进行可视化展示
+#Data analysis part
+#Visualize display by time period
 def echart_data():
     product_list=product.objects.all().values("create_at")
     product_info = []
@@ -493,33 +493,33 @@ def echart_data():
 
     data_group = pd.to_datetime(product_data['create_at'])
 
-    # 开始按照年，计算每一年上传的数量
+    # Start by year, calculate the number of uploads per year
     data_years = data_group.dt.year
     info = data_years.value_counts()
     year_list = info.to_dict()
-    # 根据年内的数据
+    # Based on data for the year
     # print(year_list)
     for demo in year_list:
         years = demo
-        # 某一年下的月的数量信息
+        # Quantity information for months under a certain year
         information = {}
 
         month_group = data_group.loc[data_group.dt.year == demo]
         month_info = month_group.dt.month.value_counts().to_dict()
         # print(month_info)
         for m in month_info:
-            # 某月下的信息量
+            # Amount of information in a month
 
             day_grop = month_group.loc[month_group.dt.month == m]
             day_info = day_grop.dt.day.value_counts().to_dict()
             # print(day_info)
-            # 某日下的信息量
+            # amount of information on a given day
             for d in day_info:
 
                 hour_group = day_grop.loc[day_grop.dt.day == d]
                 hour_info = hour_group.dt.hour.value_counts().to_dict()
                 # print(hour_info)
-                # 某时下的数据量
+                # amount of data at a time
                 for h in hour_info:
 
                     minute_group = hour_group.loc[hour_group.dt.hour == h]
@@ -542,9 +542,9 @@ def echart_data():
 
 
 
-#算法实现部分
+#Algorithm implementation part
 
-#获取全部用户的评分
+#Get the ratings of all users
 def get_all_user_score():
     data_values=list(score.objects.all().values("user_id_id","product_id_id","score"))
     global user_item
@@ -553,42 +553,42 @@ def get_all_user_score():
     user_item=data.pivot(index='user_id_id',columns='product_id_id',values='score')
     # print(user_item)
 
-#向量
+#vector
 def build_xy(user_id1,user_id2):
     bool_array = user_item.loc[user_id1].notnull() & user_item.loc[user_id2].notnull()
-    #筛选出用户1与用户2共同评论出的产品
+    #Filter out the products commented by user 1 and user 2
 
     return user_item.loc[user_id1, bool_array], user_item.loc[user_id2, bool_array]
 
 
-# 皮尔逊相关系数user_id1表示的是去匹配的用户，user_id2数主要用户
+# Pearson correlation coefficient user_id1 represents the user to match, user_id2 is the main user
 def pearson(user_id1, user_id2):
-    #对相同产品的得分
+    #Score for the same product
     x, y = build_xy(user_id1, user_id2)
-    #取均值
+    #AVG
     mean1, mean2 = x.mean(), y.mean()
-    # 分母
+    # denominator
     denominator = (sum((x-mean1)**2)*sum((y-mean2)**2))**0.5
     try:
         value = sum((x - mean1) * (y - mean2)) / denominator
     except ZeroDivisionError:
         value = 0
-    # print(str(user_id1)+"与"+str(user_id2)+"的相似度为"+str(value))
+    
     return round(value,2)
 
-# 计算最相似的邻居
+# Calculate the most similar neighbors
 def computeNearestNeighbor(user_id):
     # print(json.dumps(user_item.drop(user_id).index.to_series().apply(pearson, args=(user_id,)).to_dict()))
-            #计算所有用户的相似度，   #得到最相似的用户
+           #Calculate the similarity of all users, #Get the most similar user
     print(user_item.drop(user_id).index.to_series().apply(pearson, args=(user_id,)).nlargest(1).index[0])
     return json.dumps(user_item.drop(user_id).index.to_series().apply(pearson, args=(user_id,)).to_dict()),user_item.drop(user_id).index.to_series().apply(pearson, args=(user_id,)).nlargest(1).index[0]
 
 
-#用户相似列表，最相似的用户id，推荐的电影
+#User similarity list, most similar user id, recommended movie
 def recommend(user_id):
-    #用户的相似比,以及相似度最高的用户id
+   #The similarity ratio of users, and the user id with the highest similarity
     user_similar,most_similar=computeNearestNeighbor(user_id)
-    #找到用户没有评论过，相似用户评论过的物品从高到底进行排序
+    #Find users who have not commented, and sort items that have been commented by similar users from high to bottom
     product_list=user_item.loc[most_similar, user_item.loc[user_id].isnull() & user_item.loc[most_similar].notnull()].sort_values().to_dict()
 
     return user_similar,most_similar,product_list
@@ -597,7 +597,7 @@ def recommend(user_id):
 
 
 
-#模板
+#template
 def tempalte(request):
     flag = exist_sess(request)
     if flag:

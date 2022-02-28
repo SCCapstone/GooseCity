@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user_info',
             name='position',
-            field=models.CharField(blank=True, default='空', max_length=200, null=True, verbose_name='地址'),
+            field=models.CharField(blank=True, default='Null', max_length=200, null=True, verbose_name='address'),
         ),
     ]

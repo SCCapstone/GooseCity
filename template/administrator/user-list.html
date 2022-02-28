@@ -14,11 +14,11 @@
         <script type="text/javascript" src="{% static 'administrator/js/xadmin.js' %}"></script>
         <script type="text/javascript" src="{% static 'administrator/js/jquery.min.js' %}"></script>
     </head>
-    
+
     <body>
         <div class="x-nav">
-           
-            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="refresh">
                 <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
             </a>
         </div>
@@ -126,7 +126,7 @@
                     },
                     error:function(){
                             $(obj).parents("tr").remove();
-                            layer.msg('删除失败!', {
+                            layer.msg('failed to delete!', {
                                 icon: 1,
                                 time: 1000
                             });

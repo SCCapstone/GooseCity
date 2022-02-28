@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>查询结果页</title>
+	<title>Query result page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="Bootstrap 3 template for corporate business" />
 	<!-- css -->
@@ -32,9 +32,9 @@
         <div>
              <form class="form-horizontal" role="form" style="width:50%;margin:40px auto;">
                         <div class="form-group">
-                            <input type="submit" class="btn btn-info col-sm-2 control-label" style="text-align: center;" value="关键词搜索">
+                            <input type="submit" class="btn btn-info col-sm-2 control-label" style="text-align: center;" value="keyword search">
                             <div class="col-sm-10">
-                                <input class="form-control" id="focusedInput" type="text" name="keyword" placeholder="请输入您要查询的产品">
+                                <input class="form-control" id="focusedInput" type="text" name="keyword" placeholder="Please enter the product you are looking for">
                             </div>
                         </div>
 
@@ -50,7 +50,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<h4 class="heading">查询结果</h4>
+						<h4 class="heading">search result</h4>
 
 
 
@@ -66,7 +66,7 @@
 										<div class="cbp-caption-activeWrap">
 											<div class="cbp-l-caption-alignCenter">
 												<div class="cbp-l-caption-body">
-													<a href="{% url 'home:detail_page' %}?id={{ item.id }}" class=" cbp-l-caption-buttonRight" >查看详情</a>
+													<a href="{% url 'home:detail_page' %}?id={{ item.id }}" class=" cbp-l-caption-buttonRight" >see details</a>
 												</div>
 											</div>
 										</div>
@@ -78,124 +78,7 @@
 
 								</li>
                                 {% endfor %}
-{#								<li class="cbp-item web-design logo">#}
-{#									<div class="cbp-caption">#}
-{#										<div class="cbp-caption-defaultWrap">#}
-{#											<img src="/static/index/search/img/works/2.jpg" alt="" />#}
-{#										</div>#}
-{#										<div class="cbp-caption-activeWrap">#}
-{#											<div class="cbp-l-caption-alignCenter">#}
-{#												<div class="cbp-l-caption-body">#}
-{#													<a href="img/works/2big.jpg" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="World Clock Widget<br>by Paul Flavius Nechita">view larger</a>#}
-{#												</div>#}
-{#											</div>#}
-{#										</div>#}
-{#									</div>#}
-{#									<div class="cbp-l-grid-projects-title">World Clock Widget</div>#}
-{#									<div class="cbp-l-grid-projects-desc">Logo / Web Design</div>#}
-{#								</li>#}
-{#								<li class="cbp-item graphic logo">#}
-{#									<div class="cbp-caption">#}
-{#										<div class="cbp-caption-defaultWrap">#}
-{#											<img src="/static/index/search/img/works/3.jpg" alt="" />#}
-{#										</div>#}
-{#										<div class="cbp-caption-activeWrap">#}
-{#											<div class="cbp-l-caption-alignCenter">#}
-{#												<div class="cbp-l-caption-body">#}
-{##}
-{#													<a href="http://vimeo.com/14912890" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="To-Do Dashboard<br>by Tiberiu Neamu">view video</a>#}
-{#												</div>#}
-{#											</div>#}
-{#										</div>#}
-{#									</div>#}
-{#									<div class="cbp-l-grid-projects-title">To-Do Dashboard</div>#}
-{#									<div class="cbp-l-grid-projects-desc">Graphic / Logo</div>#}
-{#								</li>#}
-{#								<li class="cbp-item web-design graphic">#}
-{#									<div class="cbp-caption">#}
-{#										<div class="cbp-caption-defaultWrap">#}
-{#											<img src="img/works/4.jpg" alt="" />#}
-{#										</div>#}
-{#										<div class="cbp-caption-activeWrap">#}
-{#											<div class="cbp-l-caption-alignCenter">#}
-{#												<div class="cbp-l-caption-body">#}
-{##}
-{#													<a href="img/works/4big.jpg" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="Events and  More<br>by Tiberiu Neamu">view larger</a>#}
-{#												</div>#}
-{#											</div>#}
-{#										</div>#}
-{#									</div>#}
-{#									<div class="cbp-l-grid-projects-title">Events and More</div>#}
-{#									<div class="cbp-l-grid-projects-desc">Web Design / Graphic</div>#}
-{#								</li>#}
-{#								<li class="cbp-item identity web-design">#}
-{#									<div class="cbp-caption">#}
-{#										<div class="cbp-caption-defaultWrap">#}
-{#											<img src="img/works/5.jpg" alt="" />#}
-{#										</div>#}
-{#										<div class="cbp-caption-activeWrap">#}
-{#											<div class="cbp-l-caption-alignCenter">#}
-{#												<div class="cbp-l-caption-body">#}
-{##}
-{#													<a href="img/works/5big.jpg" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="WhereTO App<br>by Tiberiu Neamu">view larger</a>#}
-{#												</div>#}
-{#											</div>#}
-{#										</div>#}
-{#									</div>#}
-{#									<div class="cbp-l-grid-projects-title">WhereTO App</div>#}
-{#									<div class="cbp-l-grid-projects-desc">Web Design / Identity</div>#}
-{#								</li>#}
-{#								<li class="cbp-item identity web-design">#}
-{#									<div class="cbp-caption">#}
-{#										<div class="cbp-caption-defaultWrap">#}
-{#											<img src="img/works/6.jpg" alt="" />#}
-{#										</div>#}
-{#										<div class="cbp-caption-activeWrap">#}
-{#											<div class="cbp-l-caption-alignCenter">#}
-{#												<div class="cbp-l-caption-body">#}
-{##}
-{#													<a href="img/works/6big.jpg" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="Ski * Buddy<br>by Tiberiu Neamu">view larger</a>#}
-{#												</div>#}
-{#											</div>#}
-{#										</div>#}
-{#									</div>#}
-{#									<div class="cbp-l-grid-projects-title">Ski * Buddy</div>#}
-{#									<div class="cbp-l-grid-projects-desc">Identity / Web Design</div>#}
-{#								</li>#}
-{#								<li class="cbp-item graphic logo">#}
-{#									<div class="cbp-caption">#}
-{#										<div class="cbp-caption-defaultWrap">#}
-{#											<img src="img/works/7.jpg" alt="" />#}
-{#										</div>#}
-{#										<div class="cbp-caption-activeWrap">#}
-{#											<div class="cbp-l-caption-alignCenter">#}
-{#												<div class="cbp-l-caption-body">#}
-{##}
-{#													<a href="img/works/7big.jpg" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="Seemple* Music for iPad<br>by Tiberiu Neamu">view larger</a>#}
-{#												</div>#}
-{#											</div>#}
-{#										</div>#}
-{#									</div>#}
-{#									<div class="cbp-l-grid-projects-title">Seemple* Music for iPad</div>#}
-{#									<div class="cbp-l-grid-projects-desc">Graphic / Logo</div>#}
-{#								</li>#}
-{#								<li class="cbp-item graphic logo">#}
-{#									<div class="cbp-caption">#}
-{#										<div class="cbp-caption-defaultWrap">#}
-{#											<img src="img/works/8.jpg" alt="" />#}
-{#										</div>#}
-{#										<div class="cbp-caption-activeWrap">#}
-{#											<div class="cbp-l-caption-alignCenter">#}
-{#												<div class="cbp-l-caption-body">#}
-{##}
-{#													<a href="img/works/8big.jpg" class="cbp-lightbox cbp-l-caption-buttonRight" data-title="Seemple* Music for iPad<br>by Tiberiu Neamu">view larger</a>#}
-{#												</div>#}
-{#											</div>#}
-{#										</div>#}
-{#									</div>#}
-{#									<div class="cbp-l-grid-projects-title">Seemple* Music for iPad</div>#}
-{#									<div class="cbp-l-grid-projects-desc">Graphic / Logo</div>#}
-{#								</li>#}
+
 							</ul>
 						</div>
 
