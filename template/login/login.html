@@ -1,0 +1,75 @@
+{% extends 'login_template.html' %}
+
+{% block title %}
+login in
+{% endblock %}
+
+{% block content %}
+
+<div class="w3layouts-main">
+	<div class="bg-layer">
+		<h1>|User Login|</h1>
+		<div class="header-main">
+			<div class="main-icon">
+				<span class="fa fa-eercast"></span>
+			</div>
+			<div class="header-left-bottom">
+				<div>
+                    {% csrf_token %}
+					<div class="icon1">
+						<span class="fa fa-user"></span>
+						<input type="text" placeholder="User Name" required="" name="username" id="username"/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-lock"></span>
+						<input type="password" placeholder="Password" required="" name="password" id="password"/>
+					</div>
+
+					<div class="bottom">
+						<button class="btn" id="login">Log In</button>
+					</div>
+					<div class="links">
+						<p class="right"><a href="{% url 'home:register' %}">Registration</a></p>
+						<div class="clear"></div>
+					</div>
+				</div>
+                <script>
+                     var layer ;
+                        layui.use('layer', function(){
+                            layer = layui.layer;
+                        });
+                    $("#login").click(function(){
+                        var CsrfToken = $("[name='csrfmiddlewaretoken']").val()
+                        var username=$("#username").val();
+                        var password=$("#password").val();
+                        $.ajax({
+                            url:"{% url 'home:login' %}",
+                            type:"post",
+                            data:{
+                                'csrfmiddlewaretoken':CsrfToken,
+                                "username":username,
+                                "password":password
+                            },
+                            success:function(data){
+                                if(data.flag==0){
+                                    layer.msg("Login failed, please confirm the information to log in again",{icon:5});
+                                }
+                                else{
+                                     layer.msg("Login successful",{icon:6});
+									 $(location).attr('href', "{% url 'home:index' %}");
+                                }
+                            },
+                            error:function(e){
+                                layer.msg("System Error",{icon:5})
+                            }
+                        })
+
+                    })
+                </script>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

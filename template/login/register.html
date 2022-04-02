@@ -1,0 +1,111 @@
+{% extends 'login_template.html' %}
+{% block title %}
+register
+{% endblock %}
+
+{% block content %}
+
+
+<div class="w3layouts-main">
+	<div class="bg-layer">
+		<h1>|Register|</h1>
+		<div class="header-main">
+			<div class="main-icon">
+				<span class="fa fa-eercast"></span>
+			</div>
+			<div class="header-left-bottom">
+				<div >
+					{% csrf_token %}
+					<div class="icon1">
+						<span class="fa fa-user"></span>
+						<input type="text" placeholder="User Name" required="" id="username"/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-envelope-o"></span>
+						<input type="email" placeholder="Mailbox" required="" id="email"/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-phone"></span>
+						<input type="tel" placeholder="Cell phone number" required="" id="phonenum" maxlength="11" />
+					</div>
+					<div class="icon1">
+						<span class="fa fa-lock"></span>
+						<input type="password" placeholder="Password" required="" id="password1"/>
+					</div>
+					<div class="icon1">
+						<span class="fa fa-lock"></span>
+						<input type="password" placeholder="Confirm Password" required="" id="password2"/>
+					</div>
+
+					<div class="bottom">
+						<button class="btn" id="register">Complete registration</button>
+					</div>
+					<div class="links">
+						<p class="right"><a href="{% url 'home:login' %}">Login</a></p>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<script>
+				 var layer ;
+                        layui.use('layer', function(){
+                            layer = layui.layer;
+                        });
+			      $("#register").click(function(){
+						var isMobile=/^(?:13\d|15\d|17\d|18\d|19\d)\d{5}(\d{3}|\*{3})$/;
+						var isPhone=/^((0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/;
+						var username=$("#username").val();
+						var email=$("#email").val();
+						var phonenum=$("#phonenum").val();
+						var password1=$("#password1").val();
+						var password2=$("#password2").val();
+						var CsrfToken = $("[name='csrfmiddlewaretoken']").val()
+						if(password1!=password2){
+							alert("The password entered twice is not the same")
+						}
+
+						else{
+								if(!isMobile.test(phonenum) && !isPhone.test(phonenum)){
+								alert("Please fill in the correct phone number, for example:13415764179 or 0321-4816048");
+							}
+							else{
+									var data={
+										"username":username,
+										"email":email,
+										"phonenum":phonenum,
+										"password":password1,
+										'csrfmiddlewaretoken':CsrfToken,
+									}
+									$.ajax({
+										url:"{% url 'backstage:register' %}",
+                                        type:'post',
+										data:data,
+										success:function(d){
+											if(d.flag==1){
+												layer.msg("Registration is successful, please return to the login screen to login",{icon:6})
+											}
+											else{
+											    layer.msg("Registration failed, the information you have registered, has been registered！",{icon:5})
+											}
+
+										},
+										error:function(){
+ 												layer.msg("System Error",{icon:5})
+										}
+									})
+
+							}
+
+
+						}
+
+				  })
+
+			</script>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

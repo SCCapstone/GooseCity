@@ -1,0 +1,197 @@
+{% extends 'user2_template.html' %}
+{% block sty %}
+    <link href="/static/layui/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/layui/layui.js"></script>
+     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="/static/css/css2.css" rel="stylesheet">
+
+    <!-- Vendor CSS (Bootstrap & Icon Font) -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+    <!-- Plugins CSS (All Plugins Files) -->
+    <link rel="stylesheet" href="/static/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/fancybox.min.css">
+    <link rel="stylesheet" href="/static/css/nice-select.css">
+    <script src="/static/administrator/js/jquery.min.js"></script>
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/static/css/style.min.css">
+
+        <style>
+    .number-box {
+	border:#e5e5e5 solid 1px;
+	display:inline-block;
+	overflow:hidden;
+}
+.number-box input[type='text'] {
+	height:30px;
+	border-top:none;
+	border-bottom:none;
+	border-left:#e5e5e5 solid 1px;
+	border-right:#e5e5e5 solid 1px;
+	margin:0;
+	text-align:center;
+	width:40px;
+	outline:none;
+	padding:0 5px;
+	float:left;
+	line-height:30px;
+}
+.number-box input[type='button'] {
+	height:30px;
+	width:40px;
+	float:left;
+	border:none;
+	outline:none;
+	background-color:#f3f3f3;
+	line-height:30px;
+	cursor:pointer;
+	padding:0;
+}
+.number-box input[type='button']:hover {
+	background-color:#f9f9f9;
+}
+.number-box input[type='button']:active {
+	background-color:#f6f6f6;
+}
+
+    </style>
+<!--Chart plug-in-->
+{% endblock %}
+{% block content2 %}
+<section class="product_section sec_ptb_100 clearfix" >
+            <div style="with:100%;height:50px;"></div>
+            <div class="main_slider clearfix" data-slick='{"dots": false}'>
+					<div class="item d-flex align-items-center clearfix" data-background="assets/images/slider/modern_minimal/bg_01.jpg">
+						 <div class="container">
+
+    <div class="col-md-6" style="margin:0 auto;">
+            <div class="card">
+              <div class="card-body" style="margin:10px auto;">
+                <form   onsubmit="return false;">
+                     <div class="form-group">
+                        <label for="example-nf-email">Name</label>
+                        <input class="form-control" id="username" type="text" name="username"  value="{{ info.username }}" placeholder="Please enter a name">
+                     </div>
+                  <div class="form-group">
+                    <label for="example-nf-email">Mailbox</label>
+                    <input class="form-control" id="email" type="email" value="{{ info.email }}"  name="email" placeholder="Please enter your email address..">
+                  </div>
+                    <div class="form-group">
+                    <label for="example-nf-email">Cell phone number</label>
+                    <input class="form-control" id="phonenum" type="text" name="phonenum" value="{{ info.phonenum }}" placeholder="Please enter your cell phone number">
+                  </div>
+                  <div class="form-group">
+                    <label for="example-nf-password">Address</label>
+                    <input class="form-control" type="text" id="position" value="{{ info.position }}" name="position" placeholder="Please enter your address">
+                  </div>
+                  <div class="form-group">
+                    <button id="sub1" class="btn btn-primary" >Update personal Information</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+    </div>
+
+
+    <div class="col-md-6"  style="margin:0 auto;">
+            <div class="card">
+              <div class="card-body" style="margin:10px auto;">
+                <form onsubmit="return false;">
+                     <div class="form-group">
+                         <input name="credit_id" id="credit_id" type="hidden" value="{{ credit_demo.id }}">
+                        <label for="example-nf-email">Name</label>
+                        <input class="form-control" id="username2"  type="text" name="username"  value="{{ credit_demo.username }}" placeholder="Please enter a name">
+                     </div>
+                  <div class="form-group">
+                    <label for="example-nf-email">credit card number</label>
+                    <input class="form-control" id="number"  value="{{ credit_demo.card_num }}"  name="number" placeholder="11 card number">
+                  </div>
+                    <div class="form-group">
+                    <label for="example-nf-email">expiration date</label>
+                    <input class="form-control js-datepicker m-b-10" name="date" id="date" type="text"  placeholder="yyyy-mm-dd"  data-date-format="yyyy-mm-dd" value="{{ credit_demo.date|date:"Y-m-d" }}" />
+                  </div>
+                  <div class="form-group">
+                    <button id="sub2" class="btn btn-primary" >Update or submit credit card information</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+    </div>
+
+    <script>
+    var layer ;
+                        layui.use('layer', function(){
+                            layer = layui.layer;
+                        });
+                        $("#sub2").click(function () {
+                            var credit_id=$("#credit_id").val();
+                            var username=$("#username2").val();
+                            var number=$("#number").val();
+                            var date=$("#date").val();
+                            $.ajax({
+                                url:"{% url 'home:update_credit_card' %}",
+                                type:'post',
+                                data:{
+                                    "credit_id":credit_id,
+                                    "username":username,
+                                    "number":number,
+                                    "date":date,
+                                },
+                                success:function (data) {
+
+                                    console.log(data);
+                                    console.log(data.flag);
+                                    if(data.flag==1) {
+                                       layer.msg(data.mag,{icon:6,time:1000},function(){
+                                        location.reload();
+                                        });
+                                    }
+                                    else{
+                                        layer.msg(data.mag,{icon:5,time:1000})
+                                    }
+                                }
+
+                            })
+                        })
+
+
+        $("#sub1").click(function () {
+
+                            var username=$("#username").val();
+                            var email=$("#email").val();
+                            var phonenum=$("#phonenum").val();
+                            var position=$("#position").val();
+                            console.log()
+                            $.ajax({
+                                url:"{% url 'home:change_info' %}",
+                                type:'post',
+                                data:{
+                                    "username":username,
+                                    "email":email,
+                                    "phonenum":phonenum,
+                                    "position":position
+                                },
+                                success:function (data) {
+
+                                    console.log(data);
+                                    console.log(data.flag)
+                                    if(data.flag==1) {
+                                       layer.msg("Update successful",{icon:6,time:1000},function(){
+                                        location.reload();
+                                        });
+                                    }
+                                    else{
+                                        layer.msg("Update failed, the information you changed has been used!！",{icon:5,time:1000})
+                                    }
+                                }
+
+                            })
+                        })
+
+    </script>
+                         </div>
+                    </div>
+            </div>
+</section>
+{% endblock %}
