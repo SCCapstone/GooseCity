@@ -4,43 +4,32 @@
     <title>Product recommendation main interface</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
     <link rel="stylesheet" href="/static/index/static/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="/static/index/static/css/animate.css">
-    
     <link rel="stylesheet" href="/static/index/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/index/static/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/static/index/static/css/magnific-popup.css">
-
     <link rel="stylesheet" href="/static/index/static/css/aos.css">
-
     <link rel="stylesheet" href="/static/index/static/css/ionicons.min.css">
-
     <link rel="stylesheet" href="/static/index/static/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="/static/index/static/css/jquery.timepicker.css">
-    
     <link rel="stylesheet" href="/static/index/static/css/flaticon.css">
     <link rel="stylesheet" href="/static/index/static/css/icomoon.css">
     <link rel="stylesheet" href="/static/index/static/css/style.css">
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-	  
-	  
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="">Neutral</a>
 	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
-
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav nav ml-auto">
 	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
                 {% if info.product_info %}
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>Recommend high scoring products for you</span></a></li>
+	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>Recommend high scoring products</span></a></li>
                 {% endif %}
-
 	          <li class="nav-item"><a href="#practice-section" class="nav-link"><span>Latest Release</span></a></li>
             {% if info.product_list %}
 	          <li class="nav-item"><a href="#attorneys-section" class="nav-link"><span>Good Reviews</span></a></li>

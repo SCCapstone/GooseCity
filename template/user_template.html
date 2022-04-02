@@ -28,7 +28,7 @@
 
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
-            <li class="nav-item active"> <a href="#"><i class="mdi mdi-home"></i> Backstage Home</a> </li>
+            <li class="nav-item active"> <a href="{% url 'home:index' %}"><i class="mdi mdi-home"></i> Backstage Home</a> </li>
               <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-format-align-justify"></i>My Goods</a>
               <ul class="nav nav-subnav">
@@ -36,8 +36,6 @@
                 <li> <a href="{% url 'home:done_s' %}">Purchased goods</a> </li>
               </ul>
             </li>
-
-
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> Personal Information</a>
               <ul class="nav nav-subnav">

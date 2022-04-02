@@ -43,3 +43,13 @@ class cart(models.Model):
     flag=models.IntegerField(default=0,choices=((0,"Shopping cart"),(1,"Buy")))
     class Meta:
         db_table="cart"
+
+
+class credit_card(models.Model):
+    user_card=models.ForeignKey(user_info,on_delete=models.CASCADE,related_name="cart_user")
+    username=models.CharField(max_length=50,null=False,blank=False)
+    card_num=models.CharField(max_length=16,null=False,blank=False)
+    date=models.DateTimeField(null=False,blank=False)
+
+    class Meta:
+        db_table="credit_card"

@@ -1,172 +1,195 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<title>Sailor - Bootstrap 3 corporate template</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Bootstrap 3 template for corporate business" />
-	<!-- css -->
+{% extends 'user2_template.html' %}
+{% block sty %}
 	<link href="/static/index/search/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="/static/index/search/css/cubeportfolio.min.css" rel="stylesheet" />
 	<link href="/static/index/search/css/style.css" rel="stylesheet" />
     <link href="/static/user/css/materialdesignicons.min.css" rel="stylesheet">
 	<!-- Theme skin -->
 	<link id="t-colors" href="/static/index/search/skins/default.css" rel="stylesheet" />
-    <script src="/static/index/search/js/jquery.min.js"></script>
+        <script src="/static/index/search/js/jquery.min.js"></script>
 	<!-- boxed bg -->
+    <style>
+    .btn-cyan{
+
+        background:#d4dbe9;
+    }
+    .btn-default{
+        background:white;
+    }
+    </style>
+{% endblock %}
+
+{% block content2 %}
+
+     <section class="fashion_policy sec_ptb_100 clearfix">
+     <div style="with:100%;height:50px;"></div>
+            <div class="main_slider clearfix" data-slick='{"dots": false}'>
+					<div class="item d-flex align-items-center clearfix" data-background="assets/images/slider/modern_minimal/bg_01.jpg">
+						 <div class="container">
+            <div class="row">
+                        <section id="content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="searchtitle">
+
+                                        </div>
+                                        <article>
+                                            <div class="post-image">
+                                                <div class="post-heading">
+                                                    <h4>{{ info.product.productname }}</h4>
+                                                </div>
+                                                <img src="/static/{{ info.product.image }}" alt="" class="img-responsive" />
+                                            </div>
+                                            <p>
+                                                {{ info.product.desc }}
+                                            </p>
+                                            <p style="color:red;float:right;">Price:{{ info.product.price }}</p>
+                                        <button id="cart" class="btn {% if count_demo %}btn-cyan{% else %}btn-default{% endif %}">{% if count_demo %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                        </svg><span class="change">Add to Cart</span>{% else %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                  <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                        </svg><span>Added to shopping cart</span>{% endif %}</button>
+                                        <a id="buy"   href="{% url 'home:user_person2' %}?id={{ info.product.pk }}"  class="btn btn-default"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                </svg>Purchase</a>
+                                            <script>
+                                                $("#cart").click(function () {
+                                                    if($(this).hasClass("btn-cyan")){
+                                                        $(this).removeClass("btn-cyan");
+                                                        $(this).addClass("btn-default");
+                                                        var content="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-cart-check\" viewBox=\"0 0 16 16\">\n" +
+                                                            "  <path d=\"M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z\"/>\n" +
+                                                            "  <path d=\"M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>\n" +
+                                                            "</svg>Add to Cart";
+                                                        $(this).html(content);
+                                                        console.log("success")
+                                                        $.ajax({
+                                                            url:{% url 'home:delete_cart' %},
+                                                            type:"get",
+                                                            data:{
+                                                                "productid":"{{ info.product.id }}"
+                                                            },
+                                                            success:function (data) {
+                                                                console.log(data)
+
+                                                            },
+                                                            error:function(){
+                                                                 alert("System Error")
+                                                            }
+                                                        })
 
 
-	
-</head>
+                                                    }
+                                                    else{
+                                                        $(this).addClass("btn-cyan");
+                                                        $(this).removeClass("btn-default");
+                                                        var content="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-cart\" viewBox=\"0 0 16 16\">\n" +
+                                                            "  <path d=\"M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z\"/>\n" +
+                                                            "</svg>Added to shopping cart";
+                                                        $(this).html(content);
+                                                        $.ajax({
+                                                            url:{% url 'home:add_cart' %},
+                                                            type:"get",
+                                                            data:{
+                                                                "productid":"{{ info.product.pk }}"
+                                                            },
+                                                            success:function (data) {
+                                                                console.log(data);
+                                                                $(".change").html("Add to Cart")
+                                                            },
+                                                            error:function(){
+                                                                alert("System Error")
+                                                            }
+                                                        })
+                                                    }
 
-<body>
+                                                });
+                                                {#$("#buy").click(function(){#}
+                                                {#    $.ajax({#}
+                                                {#        url:"{% url 'home:purchase' %}",#}
+                                                {#        type:"get",#}
+                                                {#        data:{#}
+                                                {#            "produced":{{ info.product.pk }}#}
+                                                {#        },#}
+                                                {#        success:function (data) {#}
+                                                {#                console.log(data)#}
+                                                {#                if(data.flag==1){#}
+                                                {#                    window.location.replace("{% url 'home:user_person' %}")#}
+                                                {#                }#}
+                                                {#            },#}
+                                                {#        error:function(){#}
+                                                {#                alert("System Error")#}
+                                                {#            }#}
+                                                {#    })#}
+                                                {# })#}
+                                            </script>
+                                        </article>
 
-
-	<div id="wrapper">
-		<!-- start header -->
-
-		<section id="inner-headline">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<ul class="breadcrumb">
-							<li><a href="{% url 'home:index' %}">Home</a></li>
-							<li><a href="#">Product Detail Page</a><i class="icon-angle-right"></i></li>
-							<li class="active">Information Display</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section id="content">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8">
-						<div class="searchtitle">
-
-						</div>
-						<article>
-							<div class="post-image">
-								<div class="post-heading">
-									<h3><a href="#">{{ info.product.productname }}</a></h3>
-								</div>
-								<img src="/static/{{ info.product.image }}" alt="" class="img-responsive" />
-							</div>
-							<p>
-								{{ info.product.desc }}
-							</p>
-                            <p style="color:red;float:right;">Price:{{ info.product.price }}</p>
-                        <button id="cart" class="btn {% if cart_demo %}btn btn-cyan{% else %}btn btn-default{% endif %}"><i class="mdi mdi-tag-text-outline"></i>Add to Cart</button>
-                        <button id="buy" class="btn btn-default"><i class="mdi mdi-tag-heart"></i>Purchase</button>
-                            <script>
-                                $("#cart").click(function () {
-                                    if($(this).hasClass("btn-cyan")){
-                                        $(this).removeClass("btn-cyan");
-                                        $(this).addClass("btn-default");
-                                        $.ajax({
-                                            url:{% url 'home:delete_cart' %},
-                                            type:"get",
-                                            data:{
-                                                "productid":"{{ info.product.id }}"
-                                            },
-                                            success:function (data) {
-                                                console.log(data)
-                                            },
-                                            error:function(){
-                                                 alert("System Error")
-                                            }
-                                        })
-
-
-                                    }
-                                    else{
-                                        $(this).addClass("btn-cyan");
-                                        $(this).removeClass("btn-default");
-                                        $.ajax({
-                                            url:{% url 'home:add_cart' %},
-                                            type:"get",
-                                            data:{
-                                                "productid":"{{ info.product.id }}"
-                                            },
-                                            success:function (data) {
-                                                console.log(data)
-                                            },
-                                            error:function(){
-                                                alert("System Error")
-                                            }
-                                        })
-                                    }
-
-                                })
-                            </script>
-						</article>
-
-					</div>
-
-					<div class="col-lg-4">
-						<aside class="right-sidebar">
-							<div class="widget">
-
-							</div>
-							<div class="widget">
-								<h5 class="widgetheading">Rating</h5>
-								<ul class="cat" style="margin-bottom:109px;">
-                                    {% for item in info.username %}
-                                    <div class="dropdown" style="float:left;margin-left:9px;margin-bottom:10px;">
-                                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
-                                                data-toggle="dropdown">
-                                            {{ item.user_id.username }}
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-
-                                            <li role="presentation" >
-                                                <a role="menuitem" tabindex="-1" href="#">{{ item.score }}</a>
-                                            </li>
-
-                                        </ul>
                                     </div>
 
-                                    {% endfor %}
+                                    <div class="col-lg-4">
+                                        <aside class="right-sidebar">
+                                            <div class="widget">
 
-								</ul>
+                                            </div>
+                                            <div class="widget">
+                                                <h5 class="widgetheading">Rating</h5>
+                                                <ul class="cat" style="margin-bottom:109px;">
+                                                    {% for item in info.username %}
+                                                    <div class="dropdown" style="float:left;margin-left:9px;margin-bottom:10px;">
+                                                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                                                                data-toggle="dropdown">
+                                                            {{ item.score }}
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu"  aria-labelledby="dropdownMenu1">
+                                                            <li role="presentation">
+                                                                <a role="menuitem" tabindex="-1" href="#">{{ item.user_id.username }}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                    {% endfor %}
+
+                                                </ul>
 
 
-                                <form class="form-horizontal" role="form" action="{% url 'home:detail_page' %}" method="post">
+                                                <form class="form-horizontal" role="form" action="{% url 'home:detail_page' %}" method="post">
 
-                                  <div class="form-group">
+                                                  <div class="form-group">
 
-                                    <div class="col-sm-10">
-                                        <input  type="hidden" name="product_id" value="{{ info.product.id }}">
-                                        <input  type="hidden" name="user_id" value="{{ info.userid }}">
-                                      <input type="text" class="form-control" name="score" id="inputPassword" placeholder="Please enter your rating 00-10">
+                                                    <div class="col-sm-10">
+                                                        <input  type="hidden" name="product_id" value="{{ info.product.id }}">
+                                                        <input  type="hidden" name="user_id" value="{{ info.userid }}">
+                                                      <input type="text" class="form-control" name="score" id="inputPassword" placeholder="Please enter your rating 00-10">
+                                                    </div>
+                                                      <button  class="col-sm-2  btn btn-info">submit</button>
+                                                  </div>
+                                                </form>
+
+
+
+                                            </div>
+
+                                        </aside>
                                     </div>
-                                      <button  class="col-sm-2 control-label  btn btn-info">Submit</button>
-                                  </div>
-                                </form>
+
+                                </div>
 
 
-
-							</div>
-
-						</aside>
-					</div>
-
-				</div>
-
-
-			</div>
-		</section>
-
-
-
-	</div>
-	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+                            </div>
+                        </section>
+            </div>
+                         </div>
+                    </div>
+            </div>
+     </section>
 	<!-- javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-
+    <script src="/static/index/search/js/jquery.min.js"></script>
 	<script src="/static/index/search/js/modernizr.custom.js"></script>
 	<script src="/static/index/search/js/jquery.easing.1.3.js"></script>
 	<script src="/static/index/search/js/bootstrap.min.js"></script>
@@ -179,6 +202,4 @@
 	<script src="/static/index/search/js/animate.js"></script>
 	<script src="/static/index/search/js/custom.js"></script>
 
-</body>
-
-</html>
+{% endblock %}

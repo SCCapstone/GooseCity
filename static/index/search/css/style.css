@@ -570,9 +570,7 @@ header ul.nav li ul li.dropdown-submenu li a {
 	margin:0;
 	padding:0;
 }
-#featured.bg {
-	background: url(../img/dummies/feat-bg.jpg) no-repeat top center;
-}
+
 
 /* ===================================
 6. Sliders
@@ -673,7 +671,7 @@ section.callaction {
 }
 
 #parallax1{	
-	background-image: url(../img/parallax/1.jpg);
+	/*background-image: url(../img/parallax/1.jpg);*/
     background-position: center;
     background-repeat: no-repeat;
     display:block;
@@ -2526,37 +2524,6 @@ a.btn.btn-wide {
 	height:28px;
 	border:1px solid #e6e6e6;
 }
-
-.bgr .bg.bg1 {
-	background: url(../img/bodybg/bg1.png) repeat left top;
-}	
-.bgr .bg.bg2 {
-	background: url(../img/bodybg/bg2.png) repeat left top;
-}	
-.bgr .bg.bg3 {
-	background: url(../img/bodybg/bg3.jpg) repeat left top;
-}	
-.bgr .bg.bg4 {
-	background: url(../img/bodybg/bg4.png) repeat left top;
-}	
-.bgr .bg.bg5 {
-	background: url(../img/bodybg/bg5.png) repeat left top;
-}	
-.bgr .bg.bg6 {
-	background: url(../img/bodybg/bg6.png) repeat left top;
-}	
-.bgr .bg.bg7 {
-	background: url(../img/bodybg/bg7.png) repeat left top;
-}	
-.bgr .bg.bg8 {
-	background: url(../img/bodybg/bg8.jpg) repeat left top;
-}	
-.bgr .bg.bg9 {
-	background: url(../img/bodybg/bg9.png) repeat left top;
-}	
-.bgr .bg.bg10 {
-	background: url(../img/bodybg/bg10.png) repeat left top;
-}	
 
 #accent_color{
 	color: #fff;
