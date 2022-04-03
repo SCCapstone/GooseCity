@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 
-####支付宝网关
+####Alipay gateway
 ALIPAY_APPID = "2021000119609704"
 ALIPAY_URL = "https://openapi.alipaydev.com/gateway.do"
 ALIPAY_DEBUG = True
