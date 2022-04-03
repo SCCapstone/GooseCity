@@ -289,7 +289,7 @@ def product_change(request):
 
 
 
-#Product removal
+#Product remove
 def product_delete(request):
     flag = exist_sess(request)
     if flag:
