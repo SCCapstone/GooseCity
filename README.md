@@ -50,3 +50,14 @@ python manage.py runserver
 
 - #### The credit card System is working, but don't stroe any real information in this site.
 
+- #### Test account 
+       website Login account :1
+              Password: 1
+       Administrator Backstage:
+       Account:n@163.com
+       Password:1
+       
+      Also, when you going to test you also can create and add your own account both of  website and Administrator.
+
+- #### If your data visualization on the admin web page has adaptation problems，Please close the small window adjacent to him, such as the product list, and refresh. he will be back to normal.
+
