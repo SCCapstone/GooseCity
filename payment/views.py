@@ -27,7 +27,7 @@ class PayMentView(APIView):
         # Construct a payment object through the api (AliPay) in the sdk
         alipay_client = AliPay(
             appid=settings.ALIPAY_APPID,
-            app_notify_url=None,  # default callback url
+            app_notify_url=None,  
             # private key path specification
             app_private_key_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                               "app_private_key.pem"),
