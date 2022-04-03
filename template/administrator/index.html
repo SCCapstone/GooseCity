@@ -2,7 +2,7 @@
 <html class="x-admin-sm">
     <head>
         <meta charset="UTF-8">
-        <title>Background login management</title>
+        <title>Administrator login management</title>
         <meta name="renderer" content="webkit|ie-comp|ie-stand">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -14,6 +14,7 @@
         <!--[if lt IE 9]>
           <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
           <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <script src="/static/lang/en.js"></script>
         <![endif]-->
         <script>
             // Whether to enable the refresh memory tab function
@@ -23,7 +24,7 @@
     <body class="index">
         <div class="container">
             <div class="logo">
-                <a href="{% url 'backstage:index' %}">Backstage management</a></div>
+                <a href="{% url 'backstage:index' %}">Administrator management</a></div>
             <div class="left_open">
                 <a><i title="expand left column" class="iconfont">&#xe699;</i></a>
             </div>
@@ -104,7 +105,7 @@
             <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
                 <ul class="layui-tab-title">
                     <li class="home">
-                        <i class="layui-icon">&#xe68e;</i>my desktop</li></ul>
+                        <i class="layui-icon">&#xe68e;</i>Data visualized</li></ul>
                 <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
                     <dl>
                         <dd data-type="this">close current</dd>

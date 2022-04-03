@@ -13,6 +13,7 @@
         <script src="{% static 'administrator/lib/layui/layui.js' %}" charset="utf-8"></script>
         <script type="text/javascript" src="{% static 'administrator/js/xadmin.js' %}"></script>
         <script type="text/javascript" src="{% static 'administrator/js/jquery.min.js' %}"></script>
+        <script src="/static/lang/en.js"></script>
     </head>
 
     <body>
@@ -217,7 +218,12 @@
 
         /*user-delete*/
         function member_del(obj, id) {
-            layer.confirm('Confirm to delete?？',
+            layer.confirm('Confirm to delete?？',{
+                btn:[btn_ok,btn_cancel],
+                title:"delete",
+                closeBtn:unDisableButton(),
+                shadeClose:true,
+                },
             function(index) {
                 $.ajax({
                     url:"{% url 'backstage:product_delete' %}",

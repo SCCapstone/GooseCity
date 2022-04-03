@@ -13,6 +13,7 @@
         <script src="{% static 'administrator/lib/layui/layui.js' %}" charset="utf-8"></script>
         <script type="text/javascript" src="{% static 'administrator/js/xadmin.js' %}"></script>
         <script type="text/javascript" src="{% static 'administrator/js/jquery.min.js' %}"></script>
+        <script src="/static/lang/en.js"></script>
     </head>
 
     <body>
@@ -39,7 +40,7 @@
                                         <th>User Phone</th>
                                         <th>User email</th>
                                         <th>User Permission</th>
-                                        <th>Operation</th>
+<!--                                        <th>Operation</th>-->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,11 +58,11 @@
                                             {% endif %}
                                         </td>
 
-                                        <td class="td-manage">
+<!--                                        <td class="td-manage">-->
 
-                                            <a title="Delete" onclick="member_del(this,{{ info.id }})" href="javascript:;">
-                                                <i class="layui-icon">&#xe640;</i></a>
-                                        </td>
+<!--                                            <a title="Delete" onclick="member_del(this,{{ info.id }})" href="javascript:;">-->
+<!--                                                <i class="layui-icon">&#xe640;</i></a>-->
+<!--                                        </td>-->
                                     </tr>
                                     {% empty %}
                                         <tr>

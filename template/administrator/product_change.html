@@ -21,6 +21,7 @@
         <!--[if lt IE 9]>
             <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
             <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <script src="/static/lang/en.js"></script>
         <![endif]--></head>
 
     <body>
@@ -102,12 +103,15 @@
                                 //Callback for successful operation
                                 done: function (res, index, upload) {
 
-                                     layer.alert("Successful operation", {icon: 6}, function () {
-                                          var index = parent.layer.getFrameIndex(window.name);
+                                    layer.msg("Successful operation",{icon:6,time:1000},function(){
+                                        var index = parent.layer.getFrameIndex(window.name);
                                             //Close the current frame
                                             parent.layer.close(index);
                                         parent.window.location.reload();
                                     });
+
+
+
                                     console.log(res)
 
                                 },
@@ -145,16 +149,14 @@
 
                     });
                     // send asynchronous, submit the data to php
-                    layer.alert("Modified successfully", {
-                        icon: 6
-                    },
-                    function() {
-                        //Close the current frame
-                        xadmin.close();
+                     layer.msg("Successful operation",{icon:6,time:1000},function(){
+                                        xadmin.close();
 
                         // The parent window can be refreshed
                         xadmin.father_reload();
-                    });
+                                    });
+
+
                     return false;
                 });
 

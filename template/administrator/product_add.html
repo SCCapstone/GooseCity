@@ -22,6 +22,7 @@
         <!--[if lt IE 9]>
             <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
             <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <script src="/static/lang/en.js"></script>
         <![endif]--></head>
 
     <body>
@@ -100,11 +101,11 @@
                                 },
                                 //Operation success callback
                                 done: function (res, index, upload) {
+                                    layer.msg("Successful",{icon:6,time:1000},function(){
+                                        parent.window.location.reload();});
 
-                                    layer.alert("Successful", {icon: 6}, function () {
-                                        parent.window.location.reload();
-                                    })
-                                    console.log(res)
+
+
 
                                 },
                                 //upload error callback
