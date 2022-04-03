@@ -52,10 +52,11 @@ python manage.py runserver
 
 - #### Test account 
        website Login account :1
-              Password: 1
-       Administrator Backstage:
-       Account:n@163.com
-       Password:1
+               Password: 1
+       
+        Administrator Backstage:
+               Account:n@163.com
+               Password:1
        
       Also, when you going to test you also can create and add your own account both of  website and Administrator.
 
