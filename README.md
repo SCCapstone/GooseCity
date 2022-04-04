@@ -54,6 +54,7 @@ python manage.py runserver
        website Login account :1
                Password: 1
        
+       http://47.251.43.118:8000/backstage/
         Administrator Backstage:
                Account:n@163.com
                Password:1
