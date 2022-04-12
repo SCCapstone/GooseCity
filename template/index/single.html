@@ -44,7 +44,7 @@
                                             <p>
                                                 {{ info.product.desc }}
                                             </p>
-                                            <p style="color:red;float:right;">Price:{{ info.product.price }}</p>
+                                            <p style="color:red;float:right;">Price:${{ info.product.price }}</p>
 
                                         <button id="cart" class="btn {% if count_demo %}btn-cyan{% else %}btn-default{% endif %}">{% if count_demo %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
                   <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
@@ -141,10 +141,10 @@
                                                 <ul class="cat" style="margin-bottom:109px;">
                                                     {% for item in info.username %}
                                                     <div class="dropdown" style="float:left;margin-left:9px;margin-bottom:10px;">
-                                                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                                                        <button type="button" class="btn dropdown-toggle btn-default" id="dropdownMenu1"
                                                                 data-toggle="dropdown">
                                                             {{ item.score }}
-                                                            <span class="caret"></span>
+                                                            <span></span>
                                                         </button>
                                                         <ul class="dropdown-menu"  aria-labelledby="dropdownMenu1">
                                                             <li role="presentation">
@@ -158,16 +158,43 @@
                                                 </ul>
 
 
-                                                <form class="form-horizontal" role="form" action="{% url 'home:detail_page' %}" method="post">
+                                                <form class="form-horizontal" role="form" action="{% url 'home:detail_page' %}" method="post" onSubmit="return check(this);">
 
                                                   <div class="form-group">
 
                                                     <div class="col-sm-10">
                                                         <input  type="hidden" name="product_id" value="{{ info.product.id }}">
                                                         <input  type="hidden" name="user_id" value="{{ info.userid }}">
-                                                      <input type="text" class="form-control" name="score" id="inputPassword" placeholder="Please enter your rating 00-10">
+                                                      <input type="text"   class="form-control" name="score" id="inputPassword" placeholder="Please enter your rating 00-10">
                                                     </div>
-                                                      <button  class="col-sm-2  btn btn-info">submit</button>
+                                                      <button id="sub" type="submit" class="col-sm-2 btn btn-info" >sub</button>
+{#                                                      <script>#}
+{#                                                          $("#inputPassword").focus(function () {#}
+{#                                                             if($(this).val()<=10 && $(this).val()>=0){#}
+{#                                                                $("#sub").attr("disabled",false)#}
+{#                                                             }#}
+{#                                                             else{#}
+{#                                                                 $("#sub").attr("disabled",true)#}
+{#                                                             }#}
+{#                                                          });#}
+{##}
+{#                                                      </script>#}
+                                                      <script>
+                                                           function check(form){
+                                                                if(form.score.value <=10 && form.score.value>=0){
+                                                                      {##}
+                                                                      {#$("#sub").attr("disabled",false);#}
+                                                                      return true;
+                                                                }
+                                                                else{
+                                                                    console.log(form.score.value);
+                                                                     {#$("#sub").attr("disabled",true);#}
+                                                                    {#layer.msg("The value you entered is not in accordance with the rules",{icon:5,time:1000});#}
+                                                                    return false;
+                                                                }
+
+                                                            }
+                                                      </script>
                                                   </div>
                                                 </form>
 
