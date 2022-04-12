@@ -1,0 +1,260 @@
+{% extends 'user2_template.html' %}
+{% block sty %}
+     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="/static/css/css2.css" rel="stylesheet">
+
+    <!-- Vendor CSS (Bootstrap & Icon Font) -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+    <!-- Plugins CSS (All Plugins Files) -->
+    <link rel="stylesheet" href="/static/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/fancybox.min.css">
+    <link rel="stylesheet" href="/static/css/nice-select.css">
+    <link href="/static/light/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/light/css/materialdesignicons.min.css" rel="stylesheet">
+    <!--对话框-->
+    <link rel="stylesheet" href="/static/light/js/jconfirm/jquery-confirm.min.css">
+    <link href="/static/light/css/style.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/static/css/style.min.css">
+
+        <style>
+    .number-box {
+	border:#e5e5e5 solid 1px;
+	display:inline-block;
+	overflow:hidden;
+}
+.number-box input[type='text'] {
+	height:30px;
+	border-top:none;
+	border-bottom:none;
+	border-left:#e5e5e5 solid 1px;
+	border-right:#e5e5e5 solid 1px;
+	margin:0;
+	text-align:center;
+	width:40px;
+	outline:none;
+	padding:0 5px;
+	float:left;
+	line-height:30px;
+}
+.number-box input[type='button'] {
+	height:30px;
+	width:40px;
+	float:left;
+	border:none;
+	outline:none;
+	background-color:#f3f3f3;
+	line-height:30px;
+	cursor:pointer;
+	padding:0;
+}
+.number-box input[type='button']:hover {
+	background-color:#f9f9f9;
+}
+.number-box input[type='button']:active {
+	background-color:#f6f6f6;
+}
+
+    </style>
+<!--Chart plug-in-->
+{% endblock %}
+{% block content2 %}
+ <section class="product_section sec_ptb_100 clearfix" >
+            <div style="with:100%;height:50px;"></div>
+            <div class="main_slider clearfix" data-slick='{"dots": false}'>
+					<div class="item d-flex align-items-center clearfix" data-background="assets/images/slider/modern_minimal/bg_01.jpg">
+						 <div class="container">
+            <div class="row">
+
+                  <div class="col-lg-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4>{{ con }}</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                  <th>Name</th>
+                                <th>Thumbnail</th>
+                                  <th>Detail</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Operation</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in cart_list %}
+                              <tr>
+                                <td>{{ forloop.counter }}</td>
+
+                                <td>{{ item.product_id.productname }}</td>
+                                <td><img src="/static/{{ item.product_id.image }}" style="width:200px;"></td>
+                                <td title="{{ item.product_id.desc }}">{{ item.product_id.desc|truncatechars:15 }}</td>
+                                <td><span class="label label-warning">{{ item.product_id.price }}</span></td>
+                                  <td>
+                                      <div class="number-box">
+                                            <input type="button" class="on-number" value="-" data-v="-1">
+                                            <input type="text" value="{{ item.num }}" disabled="disabled" data-data="{{ item.pk }}">
+                                            <input type="button" class="on-number" value="+" data-v="1">
+                                        </div>
+
+                                  </td>
+                                <td>
+{#                                    href="{% url 'home:buy_manager' %}?cart_id={{ item.pk }}&" #}
+                                    <button class="subb btn btn-success" data-id="{{ item.pk }}">Buy</button>
+                                    <a class="btn btn-danger" href="{% url 'home:delete_cart2' %}?productid={{ item.product_id.id }}&id={{ item.pk }}">Delete</a>
+                                </td>
+                              </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="7" style="text-align: center;">No items are currently added to the cart</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                          <script>
+
+                          </script>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+             <script type="text/javascript" src="/static/user/js/jquery.min.js"></script>
+                <script src="/static/js/modernizr-3.11.7.min.js"></script>
+            <script src="/static/js/jquery-3.6.0.min.js"></script>
+            <script src="/static/js/jquery-migrate-3.3.2.min.js"></script>
+            <script src="/static/js/bootstrap.bundle.min.js"></script>
+
+            <!-- Plugins JS -->
+            <script src="/static/js/swiper-bundle.min.js"></script>
+            <script src="/static/js/fancybox.min.js"></script>
+            <script src="/static/js/jquery.nice-select.min.js"></script>
+
+            <!-- Custom Main JS -->
+            <script src="/static/js/main.js"></script>
+        <script>
+        $(document.documentElement).on("click", ".on-number", function() {
+            var $val = $(this).siblings("input[type='text']");
+                console.log($val.data("data"));
+                if(parseInt($val.val(), 10) + parseInt($(this).data("v")) >= 1 && parseInt($val.val(), 10) + parseInt($(this).data("v")) <=10){
+                    val = parseInt($val.val(), 10) + parseInt($(this).data("v"));
+                    $.ajax({
+                        url:"{% url 'home:change_count' %}",
+                        type:"get",
+                        data: {
+                            "id": $val.data("data"),
+                            "num": val,
+                        },
+                        success:function(data){
+                            console.log(data)
+                        },
+                        error:function(){
+                            alert("请求失败")
+                        }
+                    })
+                    val = parseInt($val.val(), 10) + parseInt($(this).data("v"));
+
+                    $val.val(isNaN(val) ? 0 : val);
+                }
+                {#$val.val(isNaN(val) ? 0 : val);#}
+        });
+        </script>
+                </div>
+                         </div>
+                    </div>
+            </div>
+
+ </section>
+    </section>
+    <script type="text/javascript" src="/static/light/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/light/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/light/js/perfect-scrollbar.min.js"></script>
+    	<script src="/static/layui/layui.js"></script>
+<!--dialog-->
+<script src="/static/light/js/jconfirm/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="/static/light/js/main.min.js"></script>
+    <script>
+    var layer ;
+                        layui.use('layer', function(){
+                            layer = layui.layer;
+                        });
+    $(".subb").click(function(){
+            id=$(this).data("id");
+            $.alert({
+        title: 'Please select payment method',
+        content: '',
+		buttons: {
+			confirm: {
+				text: 'Alipay',
+				btnClass: 'btn-primary',
+				action: function(){
+                    $(location).attr('href', "{% url 'home:buy_manager' %}?cart_id="+id);
+				}
+			},
+            somethingElse: {
+                text: 'The credit card',
+                btnClass: 'btn-blue',
+                action: function(){
+
+                        $.alert({
+                        title: 'Credit card payment',
+                        content: 'Confirm payment by credit card?',
+                        buttons: {
+                            confirm: {
+                                text: 'yes',
+                                btnClass: 'btn-primary',
+                                action: function(){
+                                    $.ajax({
+                                        url:"{%url  'home:credit_buy' %}",
+                                        type:"get",
+                                        data:{
+                                            "cartid":id,
+                                        },
+                                        success:function(data){
+
+                                            if(data.flag==1){
+                                                 layer.msg("complete payment",{icon:6});
+                                                var s=setTimeout(function () {
+                                                    $(location).attr('href', "{% url 'home:done_s' %}");
+                                                 }, 2000);
+
+                                            }
+                                            else{
+                                                 layer.msg("Please complete the credit card information",{icon:5});
+                                            }
+                                        },
+                                        error:function(){
+
+                                        }
+                                    })
+                                }
+                            },
+                            cancel: {
+                                text: 'no',
+                                action: function () {
+
+                                }
+                            }
+                        }
+                    });
+
+
+
+                }
+            },
+			cancel: {
+				text: 'cancel',
+				action: function () {
+
+				}
+			}
+		}
+    });
+    })
+    </script>
+{% endblock %}
