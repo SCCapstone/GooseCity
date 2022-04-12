@@ -154,7 +154,7 @@
                             console.log(data)
                         },
                         error:function(){
-                            alert("请求失败")
+                            alert("error")
                         }
                     })
                     val = parseInt($val.val(), 10) + parseInt($(this).data("v"));
@@ -175,7 +175,7 @@
 <script type="text/javascript" src="/static/light/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/static/light/js/perfect-scrollbar.min.js"></script>
     	<script src="/static/layui/layui.js"></script>
-<!--dialog-->
+<!--对话框-->
 <script src="/static/light/js/jconfirm/jquery-confirm.min.js"></script>
 <script type="text/javascript" src="/static/light/js/main.min.js"></script>
     <script>
@@ -223,6 +223,9 @@
                                                     $(location).attr('href', "{% url 'home:done_s' %}");
                                                  }, 2000);
 
+                                            }
+                                            else if(data.flag==2){
+                                                     layer.msg("Your address or phone number is empty, please complete your personal information first",{icon:5});
                                             }
                                             else{
                                                  layer.msg("Please complete the credit card information",{icon:5});

@@ -91,6 +91,7 @@
 											   <li> <a href="{% url 'home:user_person' %}">Shopping Cart</a> </li>
                                              <li> <a href="{% url 'home:done_s' %}">Order History</a> </li>
                                                <li> <a href="{% url 'home:change_info' %}">Personal & Payment Information</a> </li>
+                                               <li> <a href="{% url 'home:logout' %}">logout</a> </li>
 										</ul>
 									</li>
 								</ul>
@@ -153,7 +154,16 @@
 						{% endfor %}
 					</ul>
 
-
+{#					<ul class="total_price ul_li_block mb_30 clearfix">#}
+{#						<li>#}
+{#							<span>Subtotal:</span>#}
+{#							<span></span>#}
+{#						</li>#}
+{#						<li>#}
+{#							<span>Total:</span>#}
+{#							<span></span>#}
+{#						</li>#}
+{#					</ul>#}
 
 					<ul class="btns_group ul_li_block clearfix">
 						<li><a href="{% url 'home:user_person' %}">View Cart</a></li>
