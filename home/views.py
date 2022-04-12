@@ -116,7 +116,9 @@ def index(request):
 
                 product_all=product.objects.all().order_by("-create_at")[:8]
                 info['last_product']=product_all
-
+                height_score_list = list(score.objects.filter(user_id=user).order_by("-score").values("score"))
+                if len(height_score_list) != 0:
+                    info['height_score'] = height_score_list[0]['score']
                 return render(request,"index/index2.html",context={"info":info,"cart_demo":count_demo,"count":count})
             except:
                 height_score_list = list(score.objects.filter(user_id=user).order_by("-score").values("score"))
@@ -174,6 +176,8 @@ def detail_page(request):
             product_demo=product.objects.get(pk=product_id)
             try:
                 score_demo=int(request.POST.get("score"))
+                if score_demo>10 or score_demo<0:
+                    score_demo = 0
             except:
                 score_demo=0
             exist_demo=score.objects.filter(user_id=user_demo,product_id=product_demo).exists()
@@ -203,9 +207,11 @@ def search(request):
         count_demo, count = count_cart(request)
         if keyword==None:
             product_list = product.objects.all()[:10]
+            return render(request, 'index/search.html',
+                          context={"infos": product_list, "cart_demo": count_demo, "count": count})
         else:
             product_list=product.objects.filter(productname__icontains=keyword)
-        return render(request,'index/search.html',context={"infos":product_list,"cart_demo":count_demo,"count":count})
+            return render(request,'index/search.html',context={"infos":product_list,"cart_demo":count_demo,"count":count,"keyword":keyword})
     else:
         return redirect(reverse("home:login"))
 
@@ -344,7 +350,11 @@ def add_cart(request):
         )
         product_id=int(request.GET.get("productid"))
         product_demo=product.objects.get(pk=product_id)
-        cart.objects.create(user_id=user_demo,product_id=product_demo)
+        if cart.objects.filter(user_id=user_demo,product_id=product_demo,flag=0).exists():
+            demo=cart.objects.get(user_id=user_demo, product_id=product_demo,flag=0)
+            demo.num=demo.num+1
+        else:
+            cart.objects.create(user_id=user_demo,product_id=product_demo)
         return JsonResponse({"flag":1})
 
     else:
@@ -422,13 +432,16 @@ def credit_buy(request):
         cart_id = int(request.GET.get("cartid"))
         cart_demo = cart.objects.get(pk=cart_id,user_id=user_demo,flag=0)
         credit_demo=credit_card.objects.filter(user_card=user_demo).exists()
-        if credit_demo:
-            cart_demo.flag=1
-            cart_demo.save()
-            return JsonResponse({"flag": 1})
+        if len(user_demo.position)==0 or len(user_demo.phonenum)==0:
+            return JsonResponse({"flag": 2})
         else:
+            if credit_demo:
+                cart_demo.flag=1
+                cart_demo.save()
+                return JsonResponse({"flag": 1})
 
-            return JsonResponse({"flag": 0})
+            else:
+                return JsonResponse({"flag": 0})
 
     else:
         return redirect(reverse("home:login"))
@@ -541,6 +554,10 @@ def change_info(request):
             # password=request.POST.get("password")
             phonenum=request.POST.get("phonenum")
             position=request.POST.get("position")
+            if len(username)==0:
+                return JsonResponse({"flag": 4})
+            if len(position)>200:
+                return JsonResponse({"flag": 3})
             try:
                 if user_demo.username!=username:
                     user_demo.username=username
@@ -579,6 +596,16 @@ def done_s(request):
         )
         cart_list = cart.objects.filter(user_id=user_demo,flag=1)
         count_demo, count = count_cart(request)
+        try:
+            prod=product.objects.all()
+            data2=pd.DataFrame(prod.values())
+            data=pd.DataFrame(cart_list.values())
+
+            data=pd.merge(left=data,right=data2,left_on="product_id_id",right_on="id",how="inner")
+            data['sum']=data['num']*data['price']
+            cart_list=json.loads(data.to_json(orient="records"))
+        except:
+            pass
         return render(request,"user/index2.html",{
             "user_info":user_demo,
             "cart_list":cart_list,"cart_demo":count_demo,"count":count
@@ -619,18 +646,26 @@ def update_credit_card(request):
             username=request.POST.get("username")
             number=str(request.POST.get("number"))
             date=request.POST.get("date")
-            now=datetime.now().strftime("%Y-%m-%d")
-            ft=time.mktime(time.strptime(date,"%Y-%m-%d"))
-            st=time.mktime(time.strptime(now,"%Y-%m-%d"))
+            dat=date
+            if len(username)==0:
+                return JsonResponse({"mag": "The name cannot be blank", "flag": 0})
+            if len(date)==7:
+                dat=date+"-28"
+            now = datetime.now().strftime("%Y-%m")
+            try:
+                ft = time.mktime(time.strptime(date, "%Y-%m"))
+            except:
+                ft=time.mktime(time.strptime(date,"%Y-%m"))
+            st=time.mktime(time.strptime(now,"%Y-%m"))
             if number.isdigit():
                 if len(number)==11:
-                    if ft>st:
+                    if ft>=st:
                         if credit_id:
                             try:
                                 credit_demo=credit_card.objects.get(pk=credit_id,user_card=user_demo)
                                 credit_demo.username=username
                                 credit_demo.card_num=number
-                                credit_demo.date=date
+                                credit_demo.date=dat
                                 credit_demo.save()
                                 return JsonResponse({"mag":"Information updated successfully","flag":1})
                             except:
