@@ -44,3 +44,4 @@ But unfortunately, we haven't finished recording the video yet, so I'll put a ra
 <summary><h2> About </h2>
 -Chenhao Cui <a href="https://www.linkedin.com/in/chenhao-cui-6a43981a2">LinkedIn</a>
 -Hayden Bunce <a href="https://www.linkedin.com/in/hayden-bunce-1b94b4238/">LinkedIn</a>
+-Weihang He <a href="https://www.linkedin.com/in/weihang-he-86b570238/">FaceBook</a>
