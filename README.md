@@ -6,9 +6,9 @@ But unfortunately, we haven't finished recording the video yet, so I'll put a ra
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-<h1>User Guide</h1>
+<details><summary><h1>User Guide</h1></summary>
 <section>
-<details><summary><h2> User Interface</h2></summary>
+<h2> User Interface</h2>
 <p> Welcome to NeonCart Medical Store, an online medical shopping center dedicated to the convenience of people</p>
  <p>Please vist our shop by click[NeonCart Medical Store](http://47.251.43.118:8000.com)
  <p> When users visit our domain, they will be asked to log in, and the login operation is shown below</p>
@@ -22,12 +22,11 @@ But unfortunately, we haven't finished recording the video yet, so I'll put a ra
  <img width="878" alt="personalInfo" src="https://user-images.githubusercontent.com/57980036/164547341-4d565133-9714-48f6-8432-67b56888435e.png">
  <img width="921" alt="personal info" src="https://user-images.githubusercontent.com/57980036/164547367-7ab1c299-9e58-4799-af71-513c433ee049.png">
  <p>After completing your information, you can use our website to shop as much as you like!</p>
-</details>
 <br>
 <br>
 <section>
 
-<details><summary><h2> Administrator Interface</h2></summary>
+<h2> Administrator Interface</h2>
 <h2><p>Welcome to be the administrator of this website</p></h2>
 <p>As the administrator of this website, please always keep the following principles in mind</p>
  1.<b>Please do not disclose your login information to others</b><br>
@@ -43,5 +42,5 @@ But unfortunately, we haven't finished recording the video yet, so I'll put a ra
 </details>
 </section>
  <br>
-<details><summary><h2> About </h2></summary>
+<summary><h2> About </h2>
 -Chenhao Cui [Linkedin](https://www.linkedin.com/in/chenhao-cui-6a43981a2)
