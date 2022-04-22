@@ -45,4 +45,4 @@ But unfortunately, we haven't finished recording the video yet, so I'll put a ra
 -Chenhao Cui <a href="https://www.linkedin.com/in/chenhao-cui-6a43981a2">LinkedIn</a><br>
 -Hayden Bunce <a href="https://www.linkedin.com/in/hayden-bunce-1b94b4238/">LinkedIn</a><br>
 -Logan Etheredge <a href="https://www.linkedin.com/in/logan-etheredge-001576238">LinkedIn</a><br>
--Weihang He <a href="https://www.linkedin.com/in/weihang-he-86b570238/">FaceBook</a>
+-Weihang He <a href="https://www.linkedin.com/in/weihang-he-86b570238/">LinkedIn</a>
