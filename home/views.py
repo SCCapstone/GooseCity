@@ -675,7 +675,7 @@ def update_credit_card(request):
                                 credit_card.objects.create(user_card=user_demo,
                                                            username=username,
                                                            card_num=number,
-                                                           date=date)
+                                                           date=dat)
                                 return JsonResponse({"mag": "successfully added", "flag": 1})
                             except:
                                 return JsonResponse({"mag": "Wrong date","flag":0})
