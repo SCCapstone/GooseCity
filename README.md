@@ -61,6 +61,7 @@ python manage.py runserver
        
       Also, when you going to test you also can create and add your own account both of  website and Administrator.
 - ## Test Operation
+- #### The Test file is located at GooseCity/test.py
 - ####  Requirements
 
 ~~~shell
