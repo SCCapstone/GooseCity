@@ -94,8 +94,6 @@ python test.py
 
 - Specific connection address
 
-https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
--       
 
 - #### If your data visualization on the admin web page has adaptation problems，Please close the small window adjacent to him, such as the product list, and refresh. he will be back to normal.
 
