@@ -1,5 +1,5 @@
 # GooseCity
-- #### Environmental Requirements
+- ### Environmental Requirements
 
 The database：mysql
 
@@ -35,7 +35,7 @@ DATABASES={
 }
 ~~~
 
-- #### Project Operation
+- ### Project Operation
 
 Start the database first.
 
@@ -50,7 +50,7 @@ python manage.py runserver
 
 - #### The credit card System is working, but don't stroe any real information in this site.
 
-- #### Test account 
+- ### Test account 
        website Login account :1
                Password: 1
        
