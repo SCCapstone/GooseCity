@@ -60,6 +60,42 @@ python manage.py runserver
                Password:1
        
       Also, when you going to test you also can create and add your own account both of  website and Administrator.
+- #### Test Operation
+- ####  Requirements
+
+~~~shell
+requests
+json
+time
+lxml
+~~~
+
+
+
+#### Implementation principle
+
+Use Python's crawler technology to simulate user registration, login and other operations on the website to judge whether the returned data is abnormal.
+
+#### Operation mode
+
+~~~python
+python test.py
+~~~
+
+#### Website return value description
+
+- Examples
+
+~~~text
+200-the server successfully returned to the web page
+404-the requested page does not exist
+503-server timeout
+~~~
+
+- Specific connection address
+
+https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+-       
 
 - #### If your data visualization on the admin web page has adaptation problems，Please close the small window adjacent to him, such as the product list, and refresh. he will be back to normal.
 
