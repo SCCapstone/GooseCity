@@ -51,6 +51,7 @@ python manage.py runserver
 - #### The credit card System is working, but don't stroe any real information in this site.
 
 - ### Test account 
+-      47.251.43.118:8000/
        website Login account :1
                Password: 1
        
